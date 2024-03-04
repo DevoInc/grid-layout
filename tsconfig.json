@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "esnext"],
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "target": "ES6",
+    "types": ["node"],
+    "resolveJsonModule": true,
+    "jsx": "react",
+    "strictBindCallApply": true,
+    "noUncheckedIndexedAccess": true,
+  },
+  "include": ["src"],
+}
+

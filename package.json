@@ -1,0 +1,80 @@
+{
+  "name": "@devoinc/grid-layout",
+  "version": "1.0.0",
+  "description": "Grid layout",
+  "type": "module",
+  "types": "./dist/GridLayout.d.ts",
+  "main": "./dist/GridLayout.umd.cjs",
+  "module": "./dist/GridLayout.js",
+  "exports": {
+    ".": {
+      "import": "./dist/GridLayout.js",
+      "require": "./dist/GridLayout.umd.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "vitest",
+    "lint": "eslint src",
+    "build": "vite build",
+    "start": "npm run storybook",
+    "release": "release-it --dry-run",
+    "release:ci": "release-it --ci",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@devoinc/genesys-base-styles": "^1.2.1",
+    "@devoinc/genesys-brand-devo": "^6.1.2",
+    "@devoinc/genesys-ui": "^1.8.0",
+    "@release-it/conventional-changelog": "^8.0.1",
+    "@storybook/addon-essentials": "^7.6.3",
+    "@storybook/addon-interactions": "^7.6.3",
+    "@storybook/addon-links": "^7.6.3",
+    "@storybook/addon-themes": "^7.6.3",
+    "@storybook/blocks": "^7.6.3",
+    "@storybook/react": "^7.6.3",
+    "@storybook/react-vite": "^7.6.3",
+    "@storybook/testing-library": "^0.2.2",
+    "@types/node": "^20.10.3",
+    "@types/react": "^18.2.42",
+    "@types/react-dom": "^18.2.17",
+    "@types/styled-components": "^5.1.32",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "babel-plugin-styled-components": "^2.1.4",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-jest": "^27.6.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-storybook": "^0.6.15",
+    "jsdom": "^23.0.1",
+    "prettier": "^3.1.0",
+    "react-dom": "^18.2.0",
+    "release-it": "^17.0.0",
+    "rollup-plugin-visualizer": "^5.10.0",
+    "sass": "^1.69.5",
+    "storybook": "^7.6.3",
+    "styled-components": "^5.3.11",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.3",
+    "vite-plugin-dts": "^3.6.4",
+    "vitest": "^1.0.1"
+  },
+  "peerDependencies": {
+    "@dnd-kit/core": "^6.1.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "react": "^18.2.0"
+  },
+  "engines": {
+    "node": ">=18",
+    "npm": ">=7"
+  }
+}

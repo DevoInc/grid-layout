@@ -1,0 +1,21 @@
+{
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "conventionalcommits",
+      "infile": "CHANGELOG.md",
+      "header": "# Changelog"
+    }
+  },
+  "gitlab": {
+    "release": true,
+    "tokenRef": "GITLAB_REPO_TOKEN"
+  },
+  "git": {
+    "tagName": "v${version}",
+    "tagAnnotation": "Release v${version}",
+    "commitMessage": "Release: v${version}"
+  },
+  "npm": {
+    "skipChecks": true
+  }
+}
