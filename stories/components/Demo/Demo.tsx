@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { AppLayout } from '@devoinc/genesys-ui';
 
-import { type Layout, compact } from '../../../src';
+import { type Layout, solidGravityDynamic as dynamic } from '../../../src';
 import { Container } from '../Container';
 
 type Props = {
@@ -18,15 +18,16 @@ export const Demo: React.FC<Props> = ({
   rowHeight = 80,
   disabled = false,
 }) => {
-  const [layout, setLayout] = React.useState<Layout>(initialLayout);
-  const layoutCompact = compact(layout);
+  // Compact at initial layout
+  const [layout, setLayout] = React.useState<Layout>(dynamic(initialLayout));
   return (
     <AppLayout.Container>
       <AppLayout.Content padding={'0'}>
         <Container
-          layout={layoutCompact}
+          layout={layout}
           onChange={(layout) => {
-            setLayout(layout);
+            // compact on any change to the layout
+            setLayout(dynamic(layout));
           }}
           onChangeFinalState={(layout) => {
             console.log('onFinalChange', layout);

@@ -23,6 +23,7 @@
     "plugin:storybook/recommended"
   ],
   "rules": {
+    "@typescript-eslint/consistent-type-imports": "error",
     "quotes": [
       "error",
       "single",

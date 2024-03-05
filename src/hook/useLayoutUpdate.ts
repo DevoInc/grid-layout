@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { useDndMonitor } from '@dnd-kit/core';
 
-import { type LayoutItemRect, findById } from '../layout';
+import { findById } from '../physics';
 import { GridLayoutContext } from '../context';
-import { EventType } from '../declarations';
-import { setItemProps, removeItemProp } from '../layout/modification';
+import type { EventType, LayoutItemRect } from '../declarations';
+import { setItemProps, removeItemProp } from '../physics/modification';
 import { debounce } from '../effects';
 
 export const useLayoutUpdate = () => {
   const { toHLayout, toVLayout, layout, onChange, onChangeFinalState, cols } =
     React.useContext(GridLayoutContext);
   const init = React.useRef<LayoutItemRect | null>(null);
+  const lastMoved = React.useRef<LayoutItemRect | null>(null);
 
   useDndMonitor({
     onDragStart: (event) => {
@@ -18,8 +19,12 @@ export const useLayoutUpdate = () => {
       const eventType: EventType = event.active.data.current?.type ?? 'move';
       const item = layout.find(findById(id));
       if (item) {
+        // store the initial position of the element
         init.current = { x: item.x, y: item.y, w: item.w, h: item.h };
+        // mark the element as placeholder
         onChange(setItemProps(layout)(id, { placeholder: eventType }));
+        // prevent trigger the movement every time the element is moved
+        lastMoved.current = { x: item.x, y: item.y, w: item.w, h: item.h };
       }
     },
     onDragMove: (event) => {
@@ -54,11 +59,17 @@ export const useLayoutUpdate = () => {
 
         // Check against the last position
         if (
-          next.x !== item?.x ||
-          next.y !== item?.y ||
-          next.w !== item?.w ||
-          next.h !== item?.h
+          next.x !== lastMoved.current.x ||
+          next.y !== lastMoved.current.y ||
+          next.w !== lastMoved.current.w ||
+          next.h !== lastMoved.current.h
         ) {
+          lastMoved.current = {
+            x: next.x,
+            y: next.y,
+            w: next.w,
+            h: next.h,
+          };
           debounce(() => {
             onChange(
               setItemProps(layout)(id, {

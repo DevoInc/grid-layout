@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { type Layout } from '../layout';
+import { type Layout } from '../physics';
 
 type ContextProps = {
   layout: Layout;

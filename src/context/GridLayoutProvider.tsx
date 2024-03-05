@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { type Layout, layoutToPixels, pixelsToLayout } from '../layout';
+import { type Layout, layoutToPixels, pixelsToLayout } from '../physics';
 import { GridLayoutContext } from './GridLayoutContext';
 
 type Props = {

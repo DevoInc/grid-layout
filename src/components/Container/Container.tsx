@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { getHigherPoint } from '../../layout';
+import { getHigherPoint } from '../../physics';
 import { GridLayoutContext } from '../../context';
 import { useResizeOberver, useLayoutUpdate } from '../../hook';
 

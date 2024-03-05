@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useDndMonitor } from '@dnd-kit/core';
 
 import { GridLayoutContext } from '../../context';
-import { LayoutItemRect, findById } from '../../layout';
-import { EventType } from '../../declarations';
+import { findById } from '../../physics';
+import type { EventType, LayoutItemRect } from '../../declarations';
 
 type Props = {
   children: React.ReactNode;
