@@ -71,7 +71,7 @@ export const Item: React.FC<Props> = ({
       {...attributes}
       isDragging={isDragging}
     >
-      <Panel.Container
+      <Panel
         height={'100%'}
         draggable={true}
         elevation={isDragging ? 'draggable' : 'raised'}
@@ -105,7 +105,7 @@ export const Item: React.FC<Props> = ({
             {content ? content : `Content of ${id}`}
           </Typography.Paragraph>
         </Panel.Body>
-      </Panel.Container>
+      </Panel>
       <StyledResizeHandler {...resizeListeners} />
     </StyledItem>
   );

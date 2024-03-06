@@ -21,7 +21,7 @@ export const Demo: React.FC<Props> = ({
   // Compact at initial layout
   const [layout, setLayout] = React.useState<Layout>(dynamic(initialLayout));
   return (
-    <AppLayout.Container>
+    <AppLayout>
       <AppLayout.Content padding={'0'}>
         <Container
           layout={layout}
@@ -37,6 +37,6 @@ export const Demo: React.FC<Props> = ({
           disabled={disabled}
         />
       </AppLayout.Content>
-    </AppLayout.Container>
+    </AppLayout>
   );
 };
