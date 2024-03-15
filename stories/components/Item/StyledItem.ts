@@ -13,4 +13,5 @@ export const StyledItem = styled.div<Props>`
   top: ${({ y }) => y}px;
   width: ${({ w }) => w}px;
   height: ${({ h }) => h}px;
+  ${({ isDragging }) => (!isDragging ? 'transition: all 0.2s;' : '')}
 `;

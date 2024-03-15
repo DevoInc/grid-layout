@@ -37,17 +37,21 @@ export const Container: React.FC<Props> = ({
       <GridLayout.Wrapper>
         <GridLayout.Container bgColor={tokens.alias.color.background.app}>
           {layout.map((item) => (
-            <React.Fragment key={item.i}>
+            <GridLayout.ItemWrapper
+              id={item.i}
+              x={item.x}
+              y={item.y}
+              w={item.w}
+              h={item.h}
+              key={item.i}
+              disabled={disabled}
+            >
               <Item
                 id={item.i}
-                x={item.x}
-                y={item.y}
-                w={item.w}
-                h={item.h}
                 content={item.data?.content as string}
                 disabled={disabled}
               />
-            </React.Fragment>
+            </GridLayout.ItemWrapper>
           ))}
           <GridLayout.Placeholder>
             <Placeholder

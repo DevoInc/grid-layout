@@ -39,6 +39,7 @@ export const Placeholder: React.FC<Props> = ({
         position: 'absolute',
         zIndex: 0,
         display: 'none',
+        transition: 'all .2s',
       }}
     >
       {children}
