@@ -8,7 +8,8 @@ const meta = {
   parameters: {
     layout: 'fullscreen',
     options: {
-      showPanel: false,
+      bottomPanelHeight: 0,
+      rightPanelWidth: 0,
     },
   },
 } satisfies Meta<typeof Demo>;
