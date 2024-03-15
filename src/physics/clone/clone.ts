@@ -1,3 +1,4 @@
-import type { Layout } from '../../declarations';
+import type { Layout, LayoutItem } from '../../declarations';
 
-export const clone = (layout: Layout) => layout.map((l) => ({ ...l }));
+export const cloneLayoutItem = (layout: LayoutItem) => ({ ...layout });
+export const cloneLayout = (layout: Layout) => layout.map(cloneLayoutItem);
