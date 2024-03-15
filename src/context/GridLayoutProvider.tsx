@@ -32,7 +32,6 @@ export const GridLayoutProvider: React.FC<Props> = ({
       value={{
         layout,
         onChange: (newLayout: Layout) => {
-          // console.log(layout, newLayout);
           onChange(newLayout);
         },
         onChangeFinalState,

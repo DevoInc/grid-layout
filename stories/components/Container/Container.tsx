@@ -56,6 +56,13 @@ export const Container: React.FC<Props> = ({
               }
             />
           </GridLayout.Placeholder>
+          <GridLayout.ResizeHelper>
+            <Placeholder
+              bgColor={
+                tokens.alias.color.background.surface.backdrop.base.weaker
+              }
+            />
+          </GridLayout.ResizeHelper>
         </GridLayout.Container>
       </GridLayout.Wrapper>
     </GridLayoutProvider>

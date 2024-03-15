@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { useDndMonitor } from '@dnd-kit/core';
 
 import { GridLayoutContext } from '../../context';
-import { findById } from '../../physics';
-import type { EventType, LayoutItemRect } from '../../declarations';
+import type { LayoutItem } from '../../declarations';
 
 type Props = {
   children: React.ReactNode;
@@ -14,64 +12,25 @@ export const Placeholder: React.FC<Props> = ({
   children,
   disabled = false,
 }) => {
-  const { layout, toHPixels, toVPixels, cols } =
-    React.useContext(GridLayoutContext);
+  const { layout, toHPixels, toVPixels } = React.useContext(GridLayoutContext);
 
   const ref = React.useRef<HTMLDivElement>(null);
-  const init = React.useRef<LayoutItemRect | null>(null);
 
-  useDndMonitor({
-    onDragStart: ({ active }) => {
-      const id = active.data.current?.id ?? '';
-      const eventType: EventType = active.data.current?.type ?? 'move';
-      const item = layout.find(findById(id));
-      if (ref.current && item) {
-        init.current = { x: item.x, y: item.y, w: item.w, h: item.h };
-        const div = ref.current;
-        div.style.display = 'block';
-        if (eventType === 'resize') {
-          div.style.zIndex = '100';
-          div.style.cursor = 'se-resize';
-        }
-      }
-    },
-    onDragMove: ({ active, delta }) => {
-      const id = active.data.current?.id ?? '';
-      const eventType: EventType = active.data.current?.type ?? 'move';
-      const item = layout.find(findById(id));
-      if (item && ref.current) {
-        const div = ref.current;
-        if (eventType === 'move') {
-          div.style.left = `${toHPixels(item.x)}px`;
-          div.style.top = `${toVPixels(item.y)}px`;
-          div.style.width = `${toHPixels(item.w)}px`;
-          div.style.height = `${toVPixels(item.h)}px`;
-        } else if (eventType === 'resize' && init.current) {
-          div.style.left = `${toHPixels(item.x)}px`;
-          div.style.top = `${toVPixels(item.y)}px`;
-          div.style.width = `${Math.min(
-            toHPixels(init.current.w) + delta.x,
-            toHPixels(Math.min(item?.maxW ?? Infinity, cols - init.current.x)),
-          )}px`;
-          div.style.height = `${Math.min(
-            toVPixels(init.current.h) + delta.y,
-            toVPixels(item?.maxH ?? Infinity),
-          )}px`;
-        }
-      }
-    },
-    onDragEnd: ({ active }) => {
-      const eventType: EventType = active.data.current?.type ?? 'move';
-      if (ref.current) {
-        const div = ref.current;
-        div.style.display = 'none';
-        if (eventType === 'resize') {
-          div.style.zIndex = '0';
-          div.style.cursor = 'auto';
-        }
-      }
-    },
-  });
+  React.useEffect(() => {
+    const movedItem = layout.find(
+      (item: LayoutItem) => item.placeholder === 'move',
+    );
+    const div = ref.current;
+    if (movedItem) {
+      div.style.display = 'block';
+      div.style.left = `${toHPixels(movedItem.x)}px`;
+      div.style.top = `${toVPixels(movedItem.y)}px`;
+      div.style.width = `${toHPixels(movedItem.w)}px`;
+      div.style.height = `${toVPixels(movedItem.h)}px`;
+    } else {
+      div.style.display = 'none';
+    }
+  }, [layout]);
 
   return disabled ? null : (
     <div
