@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { type Layout } from '../physics';
+import type { Layout } from '../declarations';
 
 type ContextProps = {
   layout: Layout;
@@ -10,6 +10,7 @@ type ContextProps = {
   setColWidth: (colWidth: number) => void;
   cols: number;
   rowHeight: number;
+  animation: number;
   toHPixels: (x: number) => number;
   toVPixels: (x: number) => number;
   toHLayout: (x: number) => number;
@@ -24,6 +25,7 @@ export const gridLayoutContextDefault = {
   setColWidth: () => null,
   cols: 12,
   rowHeight: 80,
+  animation: 0.2,
   toHPixels: () => 0,
   toVPixels: () => 0,
   toHLayout: () => 0,

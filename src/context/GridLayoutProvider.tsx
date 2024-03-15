@@ -10,6 +10,7 @@ type Props = {
   onChangeFinalState: (layout: Layout) => void;
   cols?: number;
   rowHeight?: number;
+  animation?: number;
 };
 
 export const GridLayoutProvider: React.FC<Props> = ({
@@ -19,6 +20,7 @@ export const GridLayoutProvider: React.FC<Props> = ({
   onChangeFinalState,
   cols = 12,
   rowHeight = 80,
+  animation = 0.2,
 }) => {
   const [colWidth, setColWidth] = React.useState(10);
 
@@ -39,6 +41,7 @@ export const GridLayoutProvider: React.FC<Props> = ({
         rowHeight,
         colWidth,
         setColWidth,
+        animation,
         toHPixels,
         toHLayout,
         toVPixels,

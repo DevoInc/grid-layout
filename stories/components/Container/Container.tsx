@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components';
 
 import { type Brand } from '@devoinc/genesys-brand-devo';
 
-import { GridLayout, GridLayoutProvider, type Layout } from '../../../src';
+import { GridLayout, type Layout } from '../../../src';
 import { Item } from '../Item';
 import { Placeholder } from '../Placeholder';
 
@@ -27,12 +27,13 @@ export const Container: React.FC<Props> = ({
   const tokens = useTheme() as Brand;
 
   return (
-    <GridLayoutProvider
+    <GridLayout.Provider
       layout={layout}
       onChange={onChange}
       onChangeFinalState={onChangeFinalState}
       cols={cols}
       rowHeight={rowHeight}
+      animation={0.1}
     >
       <GridLayout.Wrapper>
         <GridLayout.Container bgColor={tokens.alias.color.background.app}>
@@ -69,6 +70,6 @@ export const Container: React.FC<Props> = ({
           </GridLayout.ResizeHelper>
         </GridLayout.Container>
       </GridLayout.Wrapper>
-    </GridLayoutProvider>
+    </GridLayout.Provider>
   );
 };
