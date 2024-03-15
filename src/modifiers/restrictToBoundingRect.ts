@@ -12,12 +12,7 @@ export function restrictToBoundingRect(
 
   if (rect.top + transform.y <= boundingRect.top) {
     value.y = boundingRect.top - rect.top;
-  } /* else if (
-    rect.bottom + transform.y >=
-    boundingRect.top + boundingRect.height
-  ) {
-    value.y = boundingRect.top + boundingRect.height - rect.bottom;
-  } */
+  }
 
   if (rect.left + transform.x <= boundingRect.left) {
     value.x = boundingRect.left - rect.left;

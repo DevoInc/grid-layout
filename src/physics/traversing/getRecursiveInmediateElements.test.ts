@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { getDownRecursiveInmediateElements } from './getDownRecursiveInmediateElements';
+import { getRecursiveInmediateElements } from './getRecursiveInmediateElements';
 import type { Layout, LayoutItem } from '../../declarations';
 
 describe('test', () => {
@@ -21,7 +21,7 @@ describe('test', () => {
   ];
 
   test.each(cases)('%s', (_title, layout, layoutItem, expected) => {
-    expect(getDownRecursiveInmediateElements(layout, layoutItem)).toEqual(
+    expect(getRecursiveInmediateElements(layout, 'down')(layoutItem)).toEqual(
       expected,
     );
   });

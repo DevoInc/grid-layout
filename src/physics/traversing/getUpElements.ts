@@ -1,15 +1,5 @@
 import type { Layout, LayoutItem } from '../../declarations';
-import { areIntervalsOverlaped, getIntervalFromRect } from '../interval';
-import { getRect } from '../rect';
+import { areItemsAdjacent } from '../adjacency';
 
-export const getUpElements = (layout: Layout) => (layoutItem: LayoutItem) => {
-  const rect = getRect(layoutItem);
-  return layout.filter(
-    (item) =>
-      item.y + item.h <= rect.y1 &&
-      areIntervalsOverlaped(getIntervalFromRect(rect), {
-        start: item.x,
-        end: item.x + item.w,
-      }),
-  );
-};
+export const getUpElements = (layout: Layout) => (layoutItem: LayoutItem) =>
+  layout.filter((item) => areItemsAdjacent(layoutItem, item, 'up', false));

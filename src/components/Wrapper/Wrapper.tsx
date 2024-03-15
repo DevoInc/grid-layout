@@ -25,7 +25,11 @@ export const Wrapper: React.FC<Props> = ({ children }) => {
   const sensors = useSensors(mouseSensor, touchSensor, keyboardSensor);
 
   return (
-    <DndContext sensors={sensors} modifiers={[restrictToParentElement]}>
+    <DndContext
+      sensors={sensors}
+      modifiers={[restrictToParentElement]}
+      autoScroll={{ threshold: { x: 0, y: 0.4 } }}
+    >
       {children}
     </DndContext>
   );

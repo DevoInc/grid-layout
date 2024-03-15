@@ -21,10 +21,10 @@ export const useLayoutUpdate = () => {
       if (item) {
         // store the initial position of the element
         init.current = { x: item.x, y: item.y, w: item.w, h: item.h };
-        // mark the element as placeholder
-        onChange(setItemProps(layout)(id, { placeholder: eventType }));
         // prevent trigger the movement every time the element is moved
         lastMoved.current = { x: item.x, y: item.y, w: item.w, h: item.h };
+        // mark the element as placeholder
+        onChange(setItemProps(layout)(id, { placeholder: eventType }));
       }
     },
     onDragMove: (event) => {
@@ -39,6 +39,7 @@ export const useLayoutUpdate = () => {
           w: init.current.w,
           h: init.current.h,
         };
+
         if (eventType === 'move') {
           next.x = next.x + toHLayout(event.delta.x);
           next.y = next.y + toVLayout(event.delta.y);

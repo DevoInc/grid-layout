@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { getDownInmediateElements } from './getDownInmediateElements';
+import { getInmediateElements } from './getInmediateElements';
 import type { Layout, LayoutItem } from '../../declarations';
 
 describe('test', () => {
@@ -40,6 +40,6 @@ describe('test', () => {
   ];
 
   test.each(cases)('%s', (_title, layout, layoutItem, expected) => {
-    expect(getDownInmediateElements(layout)(layoutItem)).toEqual(expected);
+    expect(getInmediateElements(layout)(layoutItem, 'down')).toEqual(expected);
   });
 });

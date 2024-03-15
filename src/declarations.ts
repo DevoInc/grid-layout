@@ -23,4 +23,6 @@ export type LayoutItem = LayoutItemPosition &
     data?: { [key: string]: unknown };
   };
 
+export type Direction = 'left' | 'right' | 'up' | 'down';
+
 export type Layout = LayoutItem[];

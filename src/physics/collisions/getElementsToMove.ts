@@ -1,17 +1,15 @@
 import type { Layout, LayoutItem } from '../../declarations';
-import { getDownRecursiveInmediateElements } from '../traversing';
-import { getImpactedElements } from './getImpactedElements';
+import { getRecursiveInmediateElements } from '../traversing';
 import { removeDuplicates } from '../modification';
+import { getLayoutCollisionsWith } from './getLayoutCollisionsWith';
 
 export const getElementsToMove =
   (layout: Layout) => (layoutItem: LayoutItem) => {
-    const result = removeDuplicates(
-      getImpactedElements(layout)(layoutItem)
-        .map((item) => [
-          item,
-          ...getDownRecursiveInmediateElements(layout, item),
-        ])
+    const getRecursiveInmediateElementsThisLayout =
+      getRecursiveInmediateElements(layout, 'down');
+    return removeDuplicates(
+      getLayoutCollisionsWith(layout)(layoutItem)
+        .map((item) => [item, ...getRecursiveInmediateElementsThisLayout(item)])
         .flat(),
     );
-    return result;
   };

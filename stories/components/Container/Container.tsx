@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components';
 
 import { type Brand } from '@devoinc/genesys-brand-devo';
 
-import { GridLayout, GridLayoutProvider, Layout } from '../../../src';
+import { GridLayout, GridLayoutProvider, type Layout } from '../../../src';
 import { Item } from '../Item';
 import { Placeholder } from '../Placeholder';
 

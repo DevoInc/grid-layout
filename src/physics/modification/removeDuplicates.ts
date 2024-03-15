@@ -1,12 +1,12 @@
 import type { Layout } from '../../declarations';
 
 export const removeDuplicates = (layout: Layout) => {
-  const idxs: string[] = [];
+  const includedIds: string[] = [];
   return layout.filter((item) => {
-    if (!idxs.includes(item.i)) {
-      idxs.push(item.i);
-      return true;
+    if (includedIds.includes(item.i)) {
+      return false;
     }
-    return false;
+    includedIds.push(item.i);
+    return true;
   });
 };

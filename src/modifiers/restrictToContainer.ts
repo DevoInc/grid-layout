@@ -12,14 +12,18 @@ export const restrictToParentElement: Modifier = ({
     return transform;
   }
 
+  const type = active?.data.current?.type;
+  const activatorEventTarget = activatorEvent?.target as HTMLDivElement;
+  const parentContainerRect =
+    type === 'resize'
+      ? (
+          activatorEventTarget?.parentNode?.parentNode as HTMLDivElement
+        ).getBoundingClientRect()
+      : containerNodeRect;
+
   return restrictToBoundingRect(
     transform,
     draggingNodeRect,
-    active?.data.current?.type === 'resize'
-      ? (
-          (activatorEvent?.target as HTMLDivElement).parentNode
-            ?.parentNode as HTMLDivElement
-        ).getBoundingClientRect()
-      : containerNodeRect,
+    parentContainerRect,
   );
 };
