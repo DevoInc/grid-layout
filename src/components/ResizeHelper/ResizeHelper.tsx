@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useDndMonitor } from '@dnd-kit/core';
 
 import { GridLayoutContext } from '../../context';
-import { findById } from '../../physics';
+import { findById } from '../../layout';
 import type { EventType } from '../../declarations';
 import type { TRect } from '../../math';
 

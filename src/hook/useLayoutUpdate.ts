@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useDndMonitor } from '@dnd-kit/core';
 
-import { findById } from '../physics';
+import { findById } from '../layout';
 import { GridLayoutContext } from '../context';
 import type { EventType, LayoutItem } from '../declarations';
 import { setItemProps, removeItemProp } from '../physics/modification';

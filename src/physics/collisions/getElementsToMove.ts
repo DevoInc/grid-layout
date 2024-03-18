@@ -1,5 +1,5 @@
 import type { Layout, LayoutItem } from '../../declarations';
-import { getRecursiveInmediateElements } from '../traversing';
+import { getRecursiveInmediateElements } from '../../layout';
 import { removeDuplicates } from '../modification';
 import { getLayoutCollisionsWith } from './getLayoutCollisionsWith';
 

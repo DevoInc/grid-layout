@@ -1,6 +1,6 @@
-import { constrain } from '../physics/boundaries';
-import { getElementsToMove, getLayoutCollisions } from '../physics/collisions';
 import type { Layout } from '../declarations';
+import { constrainLayout } from '../layout';
+import { getElementsToMove, getLayoutCollisions } from '../physics/collisions';
 import { removeItem, removeProp, sortLayout } from '../physics/modification';
 import { gravity } from '../physics/gravity';
 
@@ -8,7 +8,12 @@ export const solidGravityDynamic = (
   layout: Layout,
   limits = { w: 12, h: Infinity },
 ) => {
-  let nextLayout = constrain(layout)(limits);
+  let nextLayout = constrainLayout(layout, {
+    x1: 0,
+    y1: 0,
+    x2: limits.w,
+    y2: limits.h,
+  });
 
   let collisions = sortLayout(getLayoutCollisions(nextLayout));
   const maxIterations = collisions.length;
