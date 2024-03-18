@@ -1,4 +1,3 @@
-export * from './adjacency';
 export * from './clone';
 export * from './scale';
 export * from './gravity';

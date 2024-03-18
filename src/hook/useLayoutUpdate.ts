@@ -3,14 +3,15 @@ import { useDndMonitor } from '@dnd-kit/core';
 
 import { findById } from '../physics';
 import { GridLayoutContext } from '../context';
-import type { EventType, LayoutItem, LayoutItemRect } from '../declarations';
+import type { EventType, LayoutItem } from '../declarations';
 import { setItemProps, removeItemProp } from '../physics/modification';
+import type { TRect } from '../math';
 
 export const useLayoutUpdate = () => {
   const { toHLayout, toVLayout, layout, onChange, onChangeFinalState, cols } =
     React.useContext(GridLayoutContext);
-  const init = React.useRef<LayoutItemRect>(null);
-  const lastMoved = React.useRef<LayoutItemRect | null>(null);
+  const init = React.useRef<TRect>(null);
+  const lastMoved = React.useRef<TRect>(null);
 
   useDndMonitor({
     onDragStart: (event) => {
@@ -27,6 +28,7 @@ export const useLayoutUpdate = () => {
       }
     },
     onDragMove: (event) => {
+      console.log(event);
       const id = event.active.data.current?.id ?? '';
       const eventType: EventType = event.active.data.current?.type ?? 'move';
       const item = layout.find(findById(id));
@@ -34,12 +36,15 @@ export const useLayoutUpdate = () => {
       if (init.current && item) {
         const next = { ...init.current };
 
+        const deltaX = toHLayout(event.delta.x);
+        const deltaY = toVLayout(event.delta.y);
+
         if (eventType === 'move') {
-          next.x = next.x + toHLayout(event.delta.x);
-          next.y = next.y + toVLayout(event.delta.y);
+          next.x += deltaX;
+          next.y += deltaY;
         } else if (eventType === 'resize') {
-          const nextW = next.w + toHLayout(event.delta.x);
-          const nextH = next.h + toVLayout(event.delta.y);
+          const nextW = next.w + deltaX;
+          const nextH = next.h + deltaY;
 
           next.w =
             nextW >= (item?.minW ?? 1) &&

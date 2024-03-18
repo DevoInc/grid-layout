@@ -3,7 +3,8 @@ import { useDndMonitor } from '@dnd-kit/core';
 
 import { GridLayoutContext } from '../../context';
 import { findById } from '../../physics';
-import type { EventType, LayoutItemRect } from '../../declarations';
+import type { EventType } from '../../declarations';
+import type { TRect } from '../../math';
 
 type Props = {
   children: React.ReactNode;
@@ -18,7 +19,7 @@ export const ResizeHelper: React.FC<Props> = ({
     React.useContext(GridLayoutContext);
 
   const ref = React.useRef<HTMLDivElement>(null);
-  const init = React.useRef<LayoutItemRect | null>(null);
+  const init = React.useRef<TRect>(null);
 
   useDndMonitor({
     onDragStart: ({ active }) => {
