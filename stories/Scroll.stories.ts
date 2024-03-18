@@ -21,9 +21,9 @@ export const Scroll: Story = {
   args: {
     initialLayout: new Array(20).fill(null).map((_, index) => ({
       x: 0,
-      y: index * 2,
-      w: 2,
-      h: 2,
+      y: index,
+      w: 6,
+      h: 1,
       i: `W${index + 1}`,
     })),
   },

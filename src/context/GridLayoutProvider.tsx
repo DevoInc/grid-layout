@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { type Layout, layoutToPixels, pixelsToLayout } from '../physics';
+import type { Layout } from '../declarations';
+import { layoutToPixels, pixelsToLayout } from '../physics';
 import { GridLayoutContext } from './GridLayoutContext';
 
 type Props = {
@@ -11,6 +12,7 @@ type Props = {
   cols?: number;
   rowHeight?: number;
   animation?: number;
+  showAfterAdjustInitialSize?: boolean;
 };
 
 export const GridLayoutProvider: React.FC<Props> = ({
@@ -21,8 +23,9 @@ export const GridLayoutProvider: React.FC<Props> = ({
   cols = 12,
   rowHeight = 80,
   animation = 0.2,
+  showAfterAdjustInitialSize = true,
 }) => {
-  const [colWidth, setColWidth] = React.useState(10);
+  const [colWidth, setColWidth] = React.useState(0);
 
   const toHPixels = React.useCallback(layoutToPixels(colWidth), [colWidth]);
   const toHLayout = React.useCallback(pixelsToLayout(colWidth), [colWidth]);
@@ -46,6 +49,8 @@ export const GridLayoutProvider: React.FC<Props> = ({
         toHLayout,
         toVPixels,
         toVLayout,
+        isAfterAdjustInitialSize: colWidth > 0,
+        showAfterAdjustInitialSize,
       }}
     >
       {children}

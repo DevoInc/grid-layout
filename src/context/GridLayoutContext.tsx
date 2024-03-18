@@ -15,6 +15,8 @@ type ContextProps = {
   toVPixels: (x: number) => number;
   toHLayout: (x: number) => number;
   toVLayout: (x: number) => number;
+  isAfterAdjustInitialSize: boolean;
+  showAfterAdjustInitialSize: boolean;
 };
 
 export const gridLayoutContextDefault = {
@@ -30,6 +32,8 @@ export const gridLayoutContextDefault = {
   toVPixels: () => 0,
   toHLayout: () => 0,
   toVLayout: () => 0,
+  isAfterAdjustInitialSize: false,
+  showAfterAdjustInitialSize: true,
 };
 
 export const GridLayoutContext = React.createContext<ContextProps>(

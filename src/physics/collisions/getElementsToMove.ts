@@ -1,6 +1,6 @@
 import type { Layout, LayoutItem } from '../../declarations';
 import { getRecursiveInmediateElements } from '../../layout';
-import { removeDuplicates } from '../modification';
+import { removeDuplicates } from '../../layout';
 import { getLayoutCollisionsWith } from './getLayoutCollisionsWith';
 
 export const getElementsToMove =

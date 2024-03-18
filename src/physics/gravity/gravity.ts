@@ -1,5 +1,5 @@
 import type { Layout } from '../../declarations';
-import { sortLayout } from '../modification';
+import { sortLayout } from '../../layout';
 import {
   getHighestItem,
   getUpElements,

@@ -1,7 +1,7 @@
 import type { Layout } from '../declarations';
 import { constrainLayout } from '../layout';
 import { getElementsToMove, getLayoutCollisions } from '../physics/collisions';
-import { removeItem, removeProp, sortLayout } from '../physics/modification';
+import { removeItem, removeProp, sortLayout } from '../layout';
 import { gravity } from '../physics/gravity';
 
 export const solidGravityDynamic = (

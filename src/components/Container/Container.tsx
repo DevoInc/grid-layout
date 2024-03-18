@@ -13,7 +13,8 @@ export const Container: React.FC<Props> = ({
   children,
   bgColor = 'rgb(240, 243, 245)',
 }) => {
-  const { layout, toVPixels } = React.useContext(GridLayoutContext);
+  const { layout, toVPixels, isAfterAdjustInitialSize } =
+    React.useContext(GridLayoutContext);
   const { ref } = useResizeOberver();
   useLayoutUpdate();
 
@@ -30,7 +31,7 @@ export const Container: React.FC<Props> = ({
         position: 'relative',
       }}
     >
-      {children}
+      {isAfterAdjustInitialSize ? children : null}
     </div>
   );
 };

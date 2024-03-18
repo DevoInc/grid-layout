@@ -1,6 +1,6 @@
 import type { Layout } from '../../declarations';
 import { hasCollision } from './hasCollision';
-import { removeItem } from '../modification';
+import { removeItem } from '../../layout';
 
 export const getLayoutCollisions = (layout: Layout) =>
   layout.filter((item1) =>
