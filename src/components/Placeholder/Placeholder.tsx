@@ -12,7 +12,7 @@ export const Placeholder: React.FC<Props> = ({
   children,
   disabled = false,
 }) => {
-  const { layout, toHPixels, toVPixels, animation } =
+  const { layout, toHPixels, toVPixels, animation, animationTimingFunction } =
     React.useContext(GridLayoutContext);
 
   const ref = React.useRef<HTMLDivElement>(null);
@@ -40,7 +40,7 @@ export const Placeholder: React.FC<Props> = ({
         position: 'absolute',
         zIndex: 0,
         display: 'none',
-        transition: `all ${animation}s`,
+        transition: `all ${animation}s ${animationTimingFunction}`,
       }}
     >
       {children}

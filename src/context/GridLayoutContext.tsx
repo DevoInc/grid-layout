@@ -11,6 +11,7 @@ type ContextProps = {
   cols: number;
   rowHeight: number;
   animation: number;
+  animationTimingFunction: string;
   toHPixels: (x: number) => number;
   toVPixels: (x: number) => number;
   toHLayout: (x: number) => number;
@@ -27,13 +28,14 @@ export const gridLayoutContextDefault = {
   setColWidth: () => null,
   cols: 12,
   rowHeight: 80,
-  animation: 0.2,
+  animation: 0.1,
   toHPixels: () => 0,
   toVPixels: () => 0,
   toHLayout: () => 0,
   toVLayout: () => 0,
   isAfterAdjustInitialSize: false,
   showAfterAdjustInitialSize: true,
+  animationTimingFunction: 'linear',
 };
 
 export const GridLayoutContext = React.createContext<ContextProps>(

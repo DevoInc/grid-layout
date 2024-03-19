@@ -26,7 +26,7 @@ export const ItemWrapper: React.FC<Props> = ({
   children,
   disabled,
 }) => {
-  const { toHPixels, toVPixels, cols, animation } =
+  const { toHPixels, toVPixels, cols, animation, animationTimingFunction } =
     React.useContext(GridLayoutContext);
   const { setNodeRef, style, attributes, isDragging } = useItem({
     id,
@@ -57,7 +57,9 @@ export const ItemWrapper: React.FC<Props> = ({
         top: `${ry > 0 ? toVPixels(ry) + vGap / 2 : toVPixels(ry) + padding}px`,
         width: `${rx + w >= cols ? toHPixels(w) - padding * 2 : toHPixels(w) - hGap / 2}px`,
         height: `${toVPixels(h) - vGap / 2}px`,
-        ...(!isDragging ? { transition: `all ${animation}s` } : {}),
+        ...(!isDragging
+          ? { transition: `all ${animation}s ${animationTimingFunction}` }
+          : {}),
       }}
       data-id={id}
       {...attributes}

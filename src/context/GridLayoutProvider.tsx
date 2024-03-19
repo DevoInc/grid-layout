@@ -12,6 +12,7 @@ type Props = {
   cols?: number;
   rowHeight?: number;
   animation?: number;
+  animationTimingFunction?: string;
   showAfterAdjustInitialSize?: boolean;
 };
 
@@ -22,7 +23,8 @@ export const GridLayoutProvider: React.FC<Props> = ({
   onChangeFinalState,
   cols = 12,
   rowHeight = 80,
-  animation = 0.2,
+  animation = 0.1,
+  animationTimingFunction = 'linear',
   showAfterAdjustInitialSize = true,
 }) => {
   const [colWidth, setColWidth] = React.useState(0);
@@ -45,6 +47,7 @@ export const GridLayoutProvider: React.FC<Props> = ({
         colWidth,
         setColWidth,
         animation,
+        animationTimingFunction,
         toHPixels,
         toHLayout,
         toVPixels,
