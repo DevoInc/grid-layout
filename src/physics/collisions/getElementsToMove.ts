@@ -5,11 +5,13 @@ import { getLayoutCollisionsWith } from './getLayoutCollisionsWith';
 
 export const getElementsToMove =
   (layout: Layout) => (layoutItem: LayoutItem) => {
-    const getRecursiveInmediateElementsThisLayout =
-      getRecursiveInmediateElements(layout, 'down');
+    const getRecursiveInmediateElementsDown = getRecursiveInmediateElements(
+      layout,
+      'down',
+    );
     return removeDuplicates(
       getLayoutCollisionsWith(layout)(layoutItem)
-        .map((item) => [item, ...getRecursiveInmediateElementsThisLayout(item)])
+        .map((item) => [item, ...getRecursiveInmediateElementsDown(item)])
         .flat(),
     );
   };

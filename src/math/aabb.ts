@@ -1,4 +1,4 @@
-import type { TAABB, TRect } from './declarations';
+import type { TAABB, TDirection, TRect } from './declarations';
 import { areIntervalsOverlaped } from './interval';
 
 export const getAABBFromRect = (rect: TRect): TAABB => ({
@@ -18,7 +18,7 @@ export const getRectFromAABB = (a: TAABB): TRect => ({
 export const areAABBInProjection = (
   a: TAABB,
   b: TAABB,
-  dir: 'up' | 'down' | 'left' | 'right',
+  dir: TDirection,
   inmediate: boolean = true,
 ) => {
   const op = inmediate
