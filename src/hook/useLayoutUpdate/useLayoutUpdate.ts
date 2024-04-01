@@ -51,7 +51,6 @@ export const useLayoutUpdate = () => {
               (initialOffset.current - offsetY)) /
               rowHeight,
           );
-          console.log(next.y);
         } else if (eventType === 'resize') {
           const nextW = Math.floor(
             (next.w * colWidth + event.delta.x) / colWidth,
