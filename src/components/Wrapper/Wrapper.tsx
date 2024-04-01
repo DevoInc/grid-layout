@@ -28,7 +28,9 @@ export const Wrapper: React.FC<Props> = ({ children }) => {
     <DndContext
       sensors={sensors}
       modifiers={[restrictToParentElement]}
-      autoScroll={{ threshold: { x: 0, y: 0.4 } }}
+      autoScroll={{
+        threshold: { x: 0, y: 0.2 },
+      }}
     >
       {children}
     </DndContext>
