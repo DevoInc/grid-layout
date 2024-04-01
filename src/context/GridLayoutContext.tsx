@@ -12,10 +12,6 @@ type ContextProps = {
   rowHeight: number;
   animation: number;
   animationTimingFunction: string;
-  toHPixels: (x: number) => number;
-  toVPixels: (x: number) => number;
-  toHLayout: (x: number) => number;
-  toVLayout: (x: number) => number;
   isAfterAdjustInitialSize: boolean;
   showAfterAdjustInitialSize: boolean;
 };
@@ -29,10 +25,6 @@ export const gridLayoutContextDefault = {
   cols: 12,
   rowHeight: 80,
   animation: 0.1,
-  toHPixels: () => 0,
-  toVPixels: () => 0,
-  toHLayout: () => 0,
-  toVLayout: () => 0,
   isAfterAdjustInitialSize: false,
   showAfterAdjustInitialSize: true,
   animationTimingFunction: 'linear',

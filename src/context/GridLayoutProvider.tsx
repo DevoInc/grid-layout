@@ -29,11 +29,6 @@ export const GridLayoutProvider: React.FC<Props> = ({
 }) => {
   const [colWidth, setColWidth] = React.useState(0);
 
-  const toHPixels = React.useCallback(layoutToPixels(colWidth), [colWidth]);
-  const toHLayout = React.useCallback(pixelsToLayout(colWidth), [colWidth]);
-  const toVPixels = React.useCallback(layoutToPixels(rowHeight), [rowHeight]);
-  const toVLayout = React.useCallback(pixelsToLayout(rowHeight), [rowHeight]);
-
   return (
     <GridLayoutContext.Provider
       value={{
@@ -48,10 +43,6 @@ export const GridLayoutProvider: React.FC<Props> = ({
         setColWidth,
         animation,
         animationTimingFunction,
-        toHPixels,
-        toHLayout,
-        toVPixels,
-        toVLayout,
         isAfterAdjustInitialSize: colWidth > 0,
         showAfterAdjustInitialSize,
       }}

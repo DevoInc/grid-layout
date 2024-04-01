@@ -15,7 +15,7 @@ export const ResizeHelper: React.FC<Props> = ({
   children,
   disabled = false,
 }) => {
-  const { layout, toHPixels, toVPixels, cols } =
+  const { layout, colWidth, rowHeight, cols } =
     React.useContext(GridLayoutContext);
 
   const ref = React.useRef<HTMLDivElement>(null);
@@ -40,15 +40,15 @@ export const ResizeHelper: React.FC<Props> = ({
       const item = layout.find(findById(id));
       const div = ref.current;
       if (item && eventType === 'resize' && init.current) {
-        div.style.left = `${toHPixels(item.x)}px`;
-        div.style.top = `${toVPixels(item.y)}px`;
+        div.style.left = `${item.x * colWidth}px`;
+        div.style.top = `${item.y * rowHeight}px`;
         div.style.width = `${Math.min(
-          toHPixels(init.current.w) + delta.x,
-          toHPixels(Math.min(item?.maxW ?? Infinity, cols - init.current.x)),
+          init.current.w * colWidth + delta.x,
+          Math.min(item?.maxW ?? Infinity, cols - init.current.x) * colWidth,
         )}px`;
         div.style.height = `${Math.min(
-          toVPixels(init.current.h) + delta.y,
-          toVPixels(item?.maxH ?? Infinity),
+          init.current.h * rowHeight + delta.y,
+          item?.maxH * rowHeight ?? Infinity,
         )}px`;
       }
     },

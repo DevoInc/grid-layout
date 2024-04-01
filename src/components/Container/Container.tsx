@@ -13,7 +13,7 @@ export const Container: React.FC<Props> = ({
   children,
   bgColor = 'rgb(240, 243, 245)',
 }) => {
-  const { layout, toVPixels, isAfterAdjustInitialSize } =
+  const { layout, rowHeight, isAfterAdjustInitialSize } =
     React.useContext(GridLayoutContext);
   const { ref } = useResizeOberver();
   useLayoutUpdate();
@@ -27,7 +27,7 @@ export const Container: React.FC<Props> = ({
         maxWidth: '100%',
         overflow: 'hidden',
         minHeight: '100%',
-        height: `${toVPixels(getHigherPoint(layout))}px`,
+        height: `${getHigherPoint(layout) * rowHeight}px`,
         position: 'relative',
       }}
     >

@@ -12,7 +12,7 @@ export const Placeholder: React.FC<Props> = ({
   children,
   disabled = false,
 }) => {
-  const { layout, toHPixels, toVPixels, animation, animationTimingFunction } =
+  const { layout, colWidth, rowHeight, animation, animationTimingFunction } =
     React.useContext(GridLayoutContext);
 
   const ref = React.useRef<HTMLDivElement>(null);
@@ -24,10 +24,10 @@ export const Placeholder: React.FC<Props> = ({
     const div = ref.current;
     if (movedItem) {
       div.style.display = 'block';
-      div.style.left = `${toHPixels(movedItem.x)}px`;
-      div.style.top = `${toVPixels(movedItem.y)}px`;
-      div.style.width = `${toHPixels(movedItem.w)}px`;
-      div.style.height = `${toVPixels(movedItem.h)}px`;
+      div.style.left = `${movedItem.x * colWidth}px`;
+      div.style.top = `${movedItem.y * rowHeight}px`;
+      div.style.width = `${movedItem.w * colWidth}px`;
+      div.style.height = `${movedItem.h * rowHeight}px`;
     } else {
       div.style.display = 'none';
     }

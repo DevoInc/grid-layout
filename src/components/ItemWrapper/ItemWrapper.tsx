@@ -26,7 +26,7 @@ export const ItemWrapper: React.FC<Props> = ({
   children,
   disabled,
 }) => {
-  const { toHPixels, toVPixels, cols, animation, animationTimingFunction } =
+  const { colWidth, rowHeight, cols, animation, animationTimingFunction } =
     React.useContext(GridLayoutContext);
   const { setNodeRef, style, attributes, isDragging } = useItem({
     id,
@@ -53,10 +53,10 @@ export const ItemWrapper: React.FC<Props> = ({
         ...style,
         position: 'absolute',
         zIndex: isDragging ? 3 : 2,
-        left: `${rx > 0 ? toHPixels(rx) + hGap / 2 : toHPixels(rx) + padding}px`,
-        top: `${ry > 0 ? toVPixels(ry) + vGap / 2 : toVPixels(ry) + padding}px`,
-        width: `${rx + w >= cols ? toHPixels(w) - padding * 2 : toHPixels(w) - hGap / 2}px`,
-        height: `${toVPixels(h) - vGap / 2}px`,
+        left: `${rx > 0 ? rx * colWidth + hGap / 2 : rx * colWidth + padding}px`,
+        top: `${ry > 0 ? ry * rowHeight + vGap / 2 : ry * rowHeight + padding}px`,
+        width: `${rx + w >= cols ? w * colWidth - padding * 2 : w * colWidth - hGap / 2}px`,
+        height: `${h * rowHeight - vGap / 2}px`,
         ...(!isDragging
           ? { transition: `all ${animation}s ${animationTimingFunction}` }
           : {}),
