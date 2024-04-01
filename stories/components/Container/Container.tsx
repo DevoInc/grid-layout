@@ -33,7 +33,7 @@ export const Container: React.FC<Props> = ({
       onChangeFinalState={onChangeFinalState}
       cols={cols}
       rowHeight={rowHeight}
-      animation={0.1}
+      animation={0}
     >
       <GridLayout.Wrapper>
         <GridLayout.Container bgColor={tokens.alias.color.background.app}>

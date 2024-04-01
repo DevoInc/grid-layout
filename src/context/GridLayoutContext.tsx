@@ -24,7 +24,7 @@ export const gridLayoutContextDefault = {
   setColWidth: () => null,
   cols: 12,
   rowHeight: 80,
-  animation: 0.1,
+  animation: 0,
   isAfterAdjustInitialSize: false,
   showAfterAdjustInitialSize: true,
   animationTimingFunction: 'linear',
