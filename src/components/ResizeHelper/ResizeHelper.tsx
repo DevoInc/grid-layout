@@ -48,7 +48,7 @@ export const ResizeHelper: React.FC<Props> = ({
         )}px`;
         div.style.height = `${Math.min(
           init.current.h * rowHeight + delta.y,
-          item?.maxH * rowHeight ?? Infinity,
+          (item?.maxH ?? Infinity) * rowHeight,
         )}px`;
       }
     },
