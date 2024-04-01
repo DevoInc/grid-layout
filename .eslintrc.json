@@ -31,6 +31,7 @@
         "avoidEscape": true
       }
     ],
+    "no-console": 1,
     "@typescript-eslint/no-explicit-any": "off",
     "react/jsx-no-useless-fragment": [
       "error",
