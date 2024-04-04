@@ -2,7 +2,7 @@ import * as React from 'react';
 import { css, useTheme } from 'styled-components';
 
 import { type Brand } from '@devoinc/genesys-brand-devo';
-import { Flex, Panel, Typography } from '@devoinc/genesys-ui';
+import { Box, Flex, Panel, Typography } from '@devoinc/genesys-ui';
 
 import { useItem } from '../../../src';
 import { StyledResizeHandler } from './StyledResizeHandler';
@@ -53,10 +53,12 @@ export const Item: React.FC<Props> = ({ id, content, disabled }) => {
         >
           <Typography.Paragraph size={'xs'}>{id}</Typography.Paragraph>
         </Flex>
-        <Panel.Body>
-          <Typography.Paragraph>
-            {content ? content : `Content of ${id}`}
-          </Typography.Paragraph>
+        <Panel.Body removeSpace={true}>
+          {content && (
+            <Box padding="cmp-md">
+              <Typography.Paragraph>{content}</Typography.Paragraph>
+            </Box>
+          )}
         </Panel.Body>
       </Panel>
       <StyledResizeHandler {...resizeListeners} />
