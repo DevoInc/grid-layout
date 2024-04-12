@@ -15,7 +15,7 @@ type Props = {
   showAfterAdjustInitialSize?: boolean;
 };
 
-export const GridLayoutProvider: React.FC<Props> = ({
+export const GridLayoutContextProvider: React.FC<Props> = ({
   children,
   layout,
   onChange,
