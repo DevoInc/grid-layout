@@ -51,6 +51,10 @@ export const Container: React.FC<Props> = ({
                 id={item.i}
                 content={item.data?.content as string}
                 disabled={disabled}
+                x={item.x}
+                y={item.y}
+                w={item.w}
+                h={item.h}
               />
             </GridLayout.ItemWrapper>
           ))}

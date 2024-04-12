@@ -11,9 +11,21 @@ type Props = {
   id: string;
   content?: string;
   disabled?: boolean;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
 };
 
-export const Item: React.FC<Props> = ({ id, content, disabled }) => {
+export const Item: React.FC<Props> = ({
+  id,
+  content,
+  disabled,
+  x,
+  y,
+  w,
+  h,
+}) => {
   const theme = useTheme() as Brand;
   const [selected, setSelected] = React.useState(false);
   const { listeners, isDragging, resizeListeners } = useItem({
@@ -51,7 +63,9 @@ export const Item: React.FC<Props> = ({ id, content, disabled }) => {
             setSelected((prev) => !prev);
           }}
         >
-          <Typography.Paragraph size={'xs'}>{id}</Typography.Paragraph>
+          <Typography.Paragraph size={'xs'}>
+            {id}. ({x}, {y}) ({w}, {h})
+          </Typography.Paragraph>
         </Flex>
         <Panel.Body removeSpace={true}>
           {content && (
