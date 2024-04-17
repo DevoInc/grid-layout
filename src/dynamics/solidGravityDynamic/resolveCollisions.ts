@@ -17,7 +17,7 @@ export const resolveCollisions = (layout: TLayout, counter = 0): TLayout => {
   }
 
   const collide = collisions[0];
-  const incMap = layout
+  const incMap = sortLayout(layout)
     .filter((item) => item.i !== collide.i && hasCollision(item, collide))
     .reduce((prev, item) => {
       const inc = collide.y + collide.h - item.y;
