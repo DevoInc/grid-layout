@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { GridLayoutContext } from '../context';
-import { debounce } from '../effects';
+import { GridLayoutContext } from '../../context';
+import { debounce } from '../../effects';
 
 export const useResizeOberver = () => {
   const ref = React.useRef<HTMLDivElement>(null);
