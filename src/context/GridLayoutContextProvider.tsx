@@ -6,8 +6,7 @@ import { GridLayoutContext } from './GridLayoutContext';
 type Props = {
   children: React.ReactNode;
   layout: TLayout;
-  onChange: (layout: TLayout) => void;
-  onChangeFinalState: (layout: TLayout) => void;
+  onChange: (layout: TLayout, final: boolean) => void;
   cols?: number;
   rowHeight?: number;
   animation?: number;
@@ -19,7 +18,6 @@ export const GridLayoutContextProvider: React.FC<Props> = ({
   children,
   layout,
   onChange,
-  onChangeFinalState,
   cols = 12,
   rowHeight = 80,
   animation = 0,
@@ -32,10 +30,9 @@ export const GridLayoutContextProvider: React.FC<Props> = ({
     <GridLayoutContext.Provider
       value={{
         layout,
-        onChange: (newLayout: TLayout) => {
-          onChange(newLayout);
+        onChange: (newLayout: TLayout, final: boolean = false) => {
+          onChange(newLayout, final);
         },
-        onChangeFinalState,
         cols,
         rowHeight,
         colWidth,

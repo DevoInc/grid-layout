@@ -1,25 +1,24 @@
 import * as React from 'react';
 import { useDndMonitor } from '@dnd-kit/core';
 
-import type { TEventType, TLayoutItem } from '../../declarations';
+import type { TEventType, TLayout, TLayoutItem } from '../../declarations';
 import type { TRect } from '../../math';
 import { GridLayoutContext } from '../../context';
-import { findById, removeProp } from '../../layout';
+import { areLayoutEquals, findById, removeProp } from '../../layout';
 
 export const useLayoutUpdate = () => {
-  const { colWidth, rowHeight, layout, onChange, onChangeFinalState, cols } =
+  const { colWidth, rowHeight, layout, onChange, cols } =
     React.useContext(GridLayoutContext);
   const init = React.useRef<TRect>(null);
   const lastMoved = React.useRef<TRect>(null);
-  // Store the initial scroll offset for the movement
-  const initialOffset = React.useRef(null);
+  const initialLayout = React.useRef<TLayout>(null);
 
   useDndMonitor({
     onDragStart: (event) => {
       const id = event.active.data.current?.id ?? '';
       const eventType: TEventType = event.active.data.current?.type ?? 'move';
       const item = layout.find(findById(id)) as TLayoutItem;
-      initialOffset.current = null;
+      initialLayout.current = layout.map((item) => ({ ...item }));
       if (item) {
         // store the initial position of the element
         init.current = { x: item.x, y: item.y, w: item.w, h: item.h };
@@ -81,22 +80,10 @@ export const useLayoutUpdate = () => {
       }
     },
 
-    onDragEnd: (event) => {
-      initialOffset.current = null;
-      const id = event.active.data.current?.id ?? '';
-      const item = layout.find(findById(id));
+    onDragEnd: () => {
       const newLayout = removeProp(layout, 'placeholder');
-      onChange(newLayout);
-      if (
-        item &&
-        (item.x !== init.current.x ||
-          item.y !== init.current.y ||
-          item.w !== init.current.w ||
-          item.h !== init.current.h)
-      ) {
-        // Emit a final state only when the layout is changed at some point
-        onChangeFinalState(newLayout);
-      }
+      // Emit a final state only when the layout is changed at some point
+      onChange(newLayout, !areLayoutEquals(initialLayout.current, newLayout));
     },
   });
 };

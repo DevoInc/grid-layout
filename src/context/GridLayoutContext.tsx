@@ -4,8 +4,7 @@ import type { TLayout } from '../declarations';
 
 type ContextProps = {
   layout: TLayout;
-  onChange: (layout: TLayout) => void;
-  onChangeFinalState: (layout: TLayout) => void;
+  onChange: (layout: TLayout, final?: boolean) => void;
   colWidth: number;
   setColWidth: (colWidth: number) => void;
   cols: number;
@@ -19,7 +18,6 @@ type ContextProps = {
 export const gridLayoutContextDefault = {
   layout: [],
   onChange: () => null,
-  onChangeFinalState: () => null,
   colWidth: 10,
   setColWidth: () => null,
   cols: 12,

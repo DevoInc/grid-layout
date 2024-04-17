@@ -9,8 +9,7 @@ import { Placeholder } from '../Placeholder';
 
 type Props = {
   layout: TLayout;
-  onChange: (layout: TLayout) => void;
-  onChangeFinalState: (layout: TLayout) => void;
+  onChange: (layout: TLayout, final?: boolean) => void;
   rowHeight?: number;
   cols?: number;
   disabled?: boolean;
@@ -19,7 +18,6 @@ type Props = {
 export const Container: React.FC<Props> = ({
   layout,
   onChange,
-  onChangeFinalState,
   rowHeight = 80,
   cols = 12,
   disabled = false,
@@ -30,7 +28,6 @@ export const Container: React.FC<Props> = ({
     <GridLayout.Provider
       layout={layout}
       onChange={onChange}
-      onChangeFinalState={onChangeFinalState}
       cols={cols}
       rowHeight={rowHeight}
       animation={0.1}

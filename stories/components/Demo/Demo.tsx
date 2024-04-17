@@ -27,12 +27,12 @@ export const Demo: React.FC<Props> = ({
       <AppLayout.Content padding={'0'}>
         <Container
           layout={layout}
-          onChange={(layout) => {
+          onChange={(layout, final) => {
             // compact on any change to the layout
             setLayout(solidGravityDynamic(layout));
-          }}
-          onChangeFinalState={(layout) => {
-            console.log('onFinalChange', layout);
+            if (final) {
+              console.log('onFinalChange', layout);
+            }
           }}
           cols={cols}
           rowHeight={rowHeight}
