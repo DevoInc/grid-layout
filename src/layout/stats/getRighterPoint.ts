@@ -1,7 +1,7 @@
 import type { TLayout } from '../../declarations';
 
-export const getHigherPoint = (layout: TLayout) =>
+export const getRighterPoint = (layout: TLayout) =>
   layout.reduce((prev, cur) => {
-    const size = cur.y + cur.h;
+    const size = cur.x + cur.w;
     return size > prev ? size : prev;
   }, 0);

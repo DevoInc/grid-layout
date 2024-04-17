@@ -3,14 +3,14 @@ import { useTheme } from 'styled-components';
 
 import { type Brand } from '@devoinc/genesys-brand-devo';
 
-import { GridLayout, type Layout } from '../../../src';
+import { GridLayout, type TLayout } from '../../../src';
 import { Item } from '../Item';
 import { Placeholder } from '../Placeholder';
 
 type Props = {
-  layout: Layout;
-  onChange: (layout: Layout) => void;
-  onChangeFinalState: (layout: Layout) => void;
+  layout: TLayout;
+  onChange: (layout: TLayout) => void;
+  onChangeFinalState: (layout: TLayout) => void;
   rowHeight?: number;
   cols?: number;
   disabled?: boolean;

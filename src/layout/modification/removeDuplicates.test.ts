@@ -1,10 +1,10 @@
 import { describe, expect, test } from 'vitest';
 
 import { removeDuplicates } from './removeDuplicates';
-import type { Layout } from '../../declarations';
+import type { TLayout } from '../../declarations';
 
-describe('getElementsToMove', () => {
-  const cases: [string, Layout, Layout][] = [
+describe('removeDuplicates', () => {
+  const cases: [string, TLayout, TLayout][] = [
     [
       'Case 1',
       [

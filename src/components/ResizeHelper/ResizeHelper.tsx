@@ -3,7 +3,7 @@ import { useDndMonitor } from '@dnd-kit/core';
 
 import { GridLayoutContext } from '../../context';
 import { findById } from '../../layout';
-import type { EventType } from '../../declarations';
+import type { TEventType } from '../../declarations';
 import type { TRect } from '../../math';
 
 type Props = {
@@ -24,7 +24,7 @@ export const ResizeHelper: React.FC<Props> = ({
   useDndMonitor({
     onDragStart: ({ active }) => {
       const id = active.data.current?.id ?? '';
-      const eventType: EventType = active.data.current?.type ?? 'move';
+      const eventType: TEventType = active.data.current?.type ?? 'move';
       const item = layout.find(findById(id));
       if (item && eventType === 'resize') {
         init.current = { x: item.x, y: item.y, w: item.w, h: item.h };
@@ -36,7 +36,7 @@ export const ResizeHelper: React.FC<Props> = ({
     },
     onDragMove: ({ active, delta }) => {
       const id = active.data.current?.id ?? '';
-      const eventType: EventType = active.data.current?.type ?? 'move';
+      const eventType: TEventType = active.data.current?.type ?? 'move';
       const item = layout.find(findById(id));
       const div = ref.current;
       if (item && eventType === 'resize' && init.current) {
@@ -53,7 +53,7 @@ export const ResizeHelper: React.FC<Props> = ({
       }
     },
     onDragEnd: ({ active }) => {
-      const eventType: EventType = active.data.current?.type ?? 'move';
+      const eventType: TEventType = active.data.current?.type ?? 'move';
       if (eventType === 'resize') {
         const div = ref.current;
         div.style.display = 'none';

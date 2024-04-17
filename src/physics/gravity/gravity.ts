@@ -1,19 +1,26 @@
-import type { Layout } from '../../declarations';
+import type { TLayout } from '../../declarations';
 import { sortLayout } from '../../layout';
 import {
-  getHighestItem,
-  getUpElements,
-  getInmediateElements,
-} from '../../layout';
+  getUpperSpace,
+  getMatrixFromLayout,
+  removeMatrixItem,
+  addMatrixItem,
+} from '../../matrix';
 
-export const gravity = (layout: Layout) => {
+export const gravity = (layout: TLayout) => {
+  const matrix = getMatrixFromLayout(layout);
   const sortedLayout = sortLayout(layout);
-  sortedLayout.forEach((item, idx, arr) => {
-    const elements = getInmediateElements(arr)(item, 'up');
-    if (elements.length === 0 && item.y > 0) {
-      const upperElement = getHighestItem(getUpElements(arr)(item));
-      arr[idx].y = !upperElement ? 0 : upperElement.y + upperElement.h;
+  const newLayout = layout.map((item) => ({ ...item }));
+
+  for (const item of sortedLayout) {
+    const mutatedItem = newLayout.find((it) => it.i === item.i);
+    const moveSpaces = getUpperSpace(matrix, mutatedItem);
+    if (moveSpaces > 0) {
+      removeMatrixItem(matrix, mutatedItem.i);
+      mutatedItem.y -= moveSpaces;
+      addMatrixItem(matrix, mutatedItem);
     }
-  });
-  return sortedLayout;
+  }
+
+  return newLayout;
 };

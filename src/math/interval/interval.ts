@@ -1,4 +1,4 @@
-import type { TInterval } from './declarations';
+import type { TInterval } from '../declarations';
 
 export const hasIntervalValue = (interval: TInterval, x: number) =>
   x > interval[0] && x < interval[1];

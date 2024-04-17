@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { useDndMonitor } from '@dnd-kit/core';
 
-import type { EventType, LayoutItem } from '../../declarations';
+import type { TEventType, TLayoutItem } from '../../declarations';
 import type { TRect } from '../../math';
 import { GridLayoutContext } from '../../context';
-import { setItemProps, removeItemProp, findById } from '../../layout';
-import { getContainerScroll } from './getContainerScroll';
+import { findById, removeProp } from '../../layout';
 
 export const useLayoutUpdate = () => {
   const { colWidth, rowHeight, layout, onChange, onChangeFinalState, cols } =
@@ -18,8 +17,8 @@ export const useLayoutUpdate = () => {
   useDndMonitor({
     onDragStart: (event) => {
       const id = event.active.data.current?.id ?? '';
-      const eventType: EventType = event.active.data.current?.type ?? 'move';
-      const item = layout.find(findById(id)) as LayoutItem;
+      const eventType: TEventType = event.active.data.current?.type ?? 'move';
+      const item = layout.find(findById(id)) as TLayoutItem;
       initialOffset.current = null;
       if (item) {
         // store the initial position of the element
@@ -27,30 +26,25 @@ export const useLayoutUpdate = () => {
         // prevent trigger the movement every time the element is moved
         lastMoved.current = { x: item.x, y: item.y, w: item.w, h: item.h };
         // mark the element as placeholder
-        onChange(setItemProps(layout)(id, { placeholder: eventType }));
+        onChange(
+          layout.map((it) =>
+            it.i === id ? { ...it, placeholder: eventType } : it,
+          ),
+        );
       }
     },
+
     onDragMove: (event) => {
       const id = event.active.data.current?.id ?? '';
-      const eventType: EventType = event.active.data.current?.type ?? 'move';
+      const eventType: TEventType = event.active.data.current?.type ?? 'move';
       const item = layout.find(findById(id));
-
-      const offsetY = getContainerScroll(event.activatorEvent as MouseEvent);
-      if (initialOffset.current === null) {
-        initialOffset.current = offsetY;
-      }
 
       if (init.current && item) {
         const next = { ...init.current };
 
         if (eventType === 'move') {
           next.x = Math.floor((next.x * colWidth + event.delta.x) / colWidth);
-          next.y = Math.ceil(
-            (next.y * rowHeight +
-              event.delta.y +
-              (initialOffset.current - offsetY)) /
-              rowHeight,
-          );
+          next.y = Math.ceil((next.y * rowHeight + event.delta.y) / rowHeight);
         } else if (eventType === 'resize') {
           const nextW = Math.floor(
             (next.w * colWidth + event.delta.x) / colWidth,
@@ -78,15 +72,20 @@ export const useLayoutUpdate = () => {
           next.h !== lastMoved.current.h
         ) {
           lastMoved.current = { ...next };
-          onChange(setItemProps(layout)(id, { ...next, priority: 1 }));
+          onChange(
+            layout.map((it) =>
+              it.i === id ? { ...it, ...next, priority: 1 } : it,
+            ),
+          );
         }
       }
     },
+
     onDragEnd: (event) => {
       initialOffset.current = null;
       const id = event.active.data.current?.id ?? '';
       const item = layout.find(findById(id));
-      const newLayout = removeItemProp(layout)(id, 'placeholder');
+      const newLayout = removeProp(layout, 'placeholder');
       onChange(newLayout);
       if (
         item &&

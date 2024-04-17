@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import type { Layout } from '../declarations';
+import type { TLayout } from '../declarations';
 import { GridLayoutContext } from './GridLayoutContext';
 
 type Props = {
   children: React.ReactNode;
-  layout: Layout;
-  onChange: (layout: Layout) => void;
-  onChangeFinalState: (layout: Layout) => void;
+  layout: TLayout;
+  onChange: (layout: TLayout) => void;
+  onChangeFinalState: (layout: TLayout) => void;
   cols?: number;
   rowHeight?: number;
   animation?: number;
@@ -32,7 +32,7 @@ export const GridLayoutContextProvider: React.FC<Props> = ({
     <GridLayoutContext.Provider
       value={{
         layout,
-        onChange: (newLayout: Layout) => {
+        onChange: (newLayout: TLayout) => {
           onChange(newLayout);
         },
         onChangeFinalState,

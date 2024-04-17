@@ -1,8 +1,8 @@
 import type { TRect } from './math/declarations';
 
-export type EventType = 'move' | 'resize';
+export type TEventType = 'move' | 'resize';
 
-export type LayoutItem = TRect & {
+export type TLayoutItem = TRect & {
   i: string;
   minW?: number;
   minH?: number;
@@ -14,6 +14,4 @@ export type LayoutItem = TRect & {
   data?: { [key: string]: unknown };
 };
 
-export type Direction = 'left' | 'right' | 'up' | 'down';
-
-export type Layout = LayoutItem[];
+export type TLayout = TLayoutItem[];

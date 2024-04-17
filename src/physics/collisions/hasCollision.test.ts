@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'vitest';
 
-import type { LayoutItem } from '../../declarations';
+import type { TLayoutItem } from '../../declarations';
 import { hasCollision } from './hasCollision';
 
 describe('collisions', () => {
   describe('hasCollision', () => {
-    const cases: [string, LayoutItem, LayoutItem, boolean][] = [
+    const cases: [string, TLayoutItem, TLayoutItem, boolean][] = [
       [
         'should return false when two layout items do not collide',
         { x: 0, y: 0, w: 2, h: 2, i: '1' },

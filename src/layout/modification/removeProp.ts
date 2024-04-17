@@ -1,9 +1,5 @@
-import type { Layout, LayoutItem } from '../../declarations';
+import type { TLayout, TLayoutItem } from '../../declarations';
 
-export const removeProp = (layout: Layout) => (prop: string) =>
-  layout.map(
-    (item) =>
-      Object.entries(item).reduce((prev, [k, v]) => {
-        return k !== prop ? { ...prev, [k]: v } : prev;
-      }, {}) as LayoutItem,
-  );
+export const removeProp = (layout: TLayout, prop: keyof TLayoutItem) =>
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  layout.map(({ [prop]: _, ...rest }) => rest as TLayoutItem);

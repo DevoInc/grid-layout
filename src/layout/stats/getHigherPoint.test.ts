@@ -1,12 +1,12 @@
 import { describe, expect, test } from 'vitest';
 
-import type { Layout } from '../../declarations';
+import type { TLayout } from '../../declarations';
 import { getHigherPoint } from './getHigherPoint';
 
 describe('layout', () => {
   describe('stats', () => {
     describe('getHigherPoint', () => {
-      const cases: [string, Layout, number][] = [
+      const cases: [string, TLayout, number][] = [
         [
           'two elements',
           [

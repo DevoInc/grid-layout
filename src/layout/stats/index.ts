@@ -1,2 +1,2 @@
 export * from './getHigherPoint';
-export * from './getHighestItem';
+export * from './getRighterPoint';

@@ -1,8 +1,7 @@
-import type { Layout } from '../../declarations';
+import type { TLayout } from '../../declarations';
 import { hasCollision } from './hasCollision';
-import { removeItem } from '../../layout';
 
-export const getLayoutCollisions = (layout: Layout) =>
+export const getLayoutCollisions = (layout: TLayout) =>
   layout.filter((item1) =>
-    removeItem(layout)(item1.i).some((item2) => hasCollision(item1, item2)),
+    layout.some((item2) => item1.i !== item2.i && hasCollision(item1, item2)),
   );

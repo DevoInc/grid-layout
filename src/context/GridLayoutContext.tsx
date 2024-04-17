@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import type { Layout } from '../declarations';
+import type { TLayout } from '../declarations';
 
 type ContextProps = {
-  layout: Layout;
-  onChange: (layout: Layout) => void;
-  onChangeFinalState: (layout: Layout) => void;
+  layout: TLayout;
+  onChange: (layout: TLayout) => void;
+  onChangeFinalState: (layout: TLayout) => void;
   colWidth: number;
   setColWidth: (colWidth: number) => void;
   cols: number;

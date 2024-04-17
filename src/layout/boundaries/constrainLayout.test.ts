@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'vitest';
 
 import { constrainLayout } from './constrainLayout';
-import type { Layout } from '../../declarations';
+import type { TLayout } from '../../declarations';
 import { type TAABB } from '../../math';
 
 describe('constrain', () => {
-  const cases: [string, Layout, TAABB, Layout][] = [
+  const cases: [string, TLayout, TAABB, TLayout][] = [
     [
       'Case 1',
       [

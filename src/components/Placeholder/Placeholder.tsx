@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { GridLayoutContext } from '../../context';
-import type { LayoutItem } from '../../declarations';
+import type { TLayoutItem } from '../../declarations';
 
 type Props = {
   children: React.ReactNode;
@@ -19,7 +19,7 @@ export const Placeholder: React.FC<Props> = ({
 
   React.useEffect(() => {
     const movedItem = layout.find(
-      (item: LayoutItem) => item.placeholder === 'move',
+      (item: TLayoutItem) => item.placeholder === 'move',
     );
     const div = ref.current;
     if (movedItem) {

@@ -30,6 +30,8 @@ export const Wrapper: React.FC<Props> = ({ children }) => {
       modifiers={[restrictToParentElement]}
       autoScroll={{
         threshold: { x: 0, y: 0.2 },
+        layoutShiftCompensation: false,
+        // enabled: false,
       }}
     >
       {children}

@@ -1,12 +1,12 @@
 import { describe, expect, test } from 'vitest';
 
-import type { Layout } from '../../declarations';
+import type { TLayout } from '../../declarations';
 import { sortLayout } from './sort';
 
 describe('Sort', () => {
   describe('sortLayoutItemsByRowCol', () => {
     test('should return a sorted layout array based on row and column values', () => {
-      const layout: Layout = [
+      const layout: TLayout = [
         { i: '1', x: 1, y: 2, w: 3, h: 4 },
         { i: '2', x: 2, y: 1, w: 3, h: 4 },
         { i: '3', x: 3, y: 3, w: 3, h: 4 },
@@ -22,7 +22,7 @@ describe('Sort', () => {
     });
 
     test('should handle layouts with multiple rows and columns', () => {
-      const layout: Layout = [
+      const layout: TLayout = [
         { i: '1', x: 1, y: 2, w: 3, h: 4 },
         { i: '2', x: 2, y: 1, w: 3, h: 4 },
         { i: '3', x: 3, y: 3, w: 3, h: 4 },
@@ -42,7 +42,7 @@ describe('Sort', () => {
     });
 
     test('should sort items in ascending order based on y value, then x value', () => {
-      const layout: Layout = [
+      const layout: TLayout = [
         { i: '1', x: 1, y: 2, w: 3, h: 4 },
         { i: '2', x: 2, y: 1, w: 3, h: 4 },
         { i: '3', x: 3, y: 3, w: 3, h: 4 },
@@ -62,7 +62,7 @@ describe('Sort', () => {
     });
 
     test('should handle empty layout array', () => {
-      const layout: Layout = [];
+      const layout: TLayout = [];
 
       const sortedLayout = sortLayout(layout);
 
@@ -70,7 +70,7 @@ describe('Sort', () => {
     });
 
     test('test', () => {
-      const layout: Layout = [
+      const layout: TLayout = [
         { x: 0, y: 0, w: 2, h: 2, i: 'W1' },
         { x: 9, y: 1, w: 2, h: 2, i: 'W2' },
         { x: 10, y: 0, w: 2, h: 2, i: 'W5' },

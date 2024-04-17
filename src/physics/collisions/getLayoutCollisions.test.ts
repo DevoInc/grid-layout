@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'vitest';
 
-import type { Layout } from '../../declarations';
+import type { TLayout } from '../../declarations';
 import { getLayoutCollisions } from './getLayoutCollisions';
 
 describe('collisions', () => {
   describe('getLayoutCollisions', () => {
-    const cases: [string, Layout, Layout][] = [
+    const cases: [string, TLayout, TLayout][] = [
       [
         'no collisions',
         [

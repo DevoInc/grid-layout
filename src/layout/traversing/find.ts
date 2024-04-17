@@ -1,3 +1,3 @@
-import type { LayoutItem } from '../../declarations';
+import type { TLayoutItem } from '../../declarations';
 
-export const findById = (id: string) => (item: LayoutItem) => item.i === id;
+export const findById = (id: string) => (item: TLayoutItem) => item.i === id;
