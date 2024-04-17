@@ -35,7 +35,11 @@ export const resolveCollisions = (layout: TLayout, counter = 0): TLayout => {
 
   const nextLayout = layout.map((item) =>
     incMap[item.i] !== undefined
-      ? { ...item, y: item.y + incMap[item.i] }
+      ? {
+          ...item,
+          y: item.y + incMap[item.i],
+          priority: layout.length - counter,
+        }
       : item,
   );
 

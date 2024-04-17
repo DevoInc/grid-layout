@@ -74,7 +74,7 @@ export const useLayoutUpdate = () => {
           lastMoved.current = { ...next };
           onChange(
             layout.map((it) =>
-              it.i === id ? { ...it, ...next, priority: 1 } : it,
+              it.i === id ? { ...it, ...next, priority: Infinity } : it,
             ),
           );
         }
