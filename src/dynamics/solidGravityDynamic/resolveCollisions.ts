@@ -27,13 +27,15 @@ export const resolveCollisions = (
       const inc = collide.y + collide.h - item.y;
       const priority = item.priority ? item.priority : branchPriority--;
       return {
-        ...getSupportTree(layout, item).reduce(
-          (prev2, item2) => ({
-            ...prev2,
-            [item2.i]: { inc, priority },
-          }),
-          {},
-        ),
+        ...getSupportTree(layout, item)
+          .filter((it) => it.priority === undefined || it.priority <= priority)
+          .reduce(
+            (prev2, item2) => ({
+              ...prev2,
+              [item2.i]: { inc, priority },
+            }),
+            {},
+          ),
         ...prev,
       };
     }, {});

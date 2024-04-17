@@ -48,6 +48,21 @@ describe('dynamics', () => {
             { x: 0, y: 5, w: 2, h: 2, i: '3', priority: 3 },
           ],
         ],
+        [
+          'another more branch preference each iter with gap',
+          [
+            { x: 0, y: 0, w: 2, h: 2, i: '1' },
+            { x: 1, y: 0, w: 1, h: 5, i: '2', priority: Infinity },
+            { x: 0, y: 2, w: 2, h: 1, i: '3' },
+            { x: 0, y: 5, w: 3, h: 2, i: '4' },
+          ],
+          [
+            { x: 0, y: 5, w: 2, h: 2, i: '1', priority: 4 },
+            { x: 1, y: 0, w: 1, h: 5, i: '2', priority: Infinity },
+            { x: 0, y: 7, w: 2, h: 1, i: '3', priority: 4 },
+            { x: 0, y: 8, w: 3, h: 2, i: '4', priority: 2 },
+          ],
+        ],
       ];
 
       test.each(cases)('%s', (_title, layout, expected) => {
