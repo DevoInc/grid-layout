@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Demo } from './components';
+import { Demo } from '../components';
 
 const meta = {
-  title: 'OutOfTheContainer',
+  title: 'Examples/Disabled',
   component: Demo,
   parameters: {
     layout: 'fullscreen',
@@ -17,8 +17,9 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const OutOfTheContainer: Story = {
+export const Disabled: Story = {
   args: {
+    disabled: true,
     initialLayout: [
       { x: 0, y: -2, w: 2, h: 2, i: 'W1' },
       { x: -2, y: 0, w: 2, h: 2, i: 'W2' },

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Demo } from './components';
+import { Demo } from '../components';
 
 const meta = {
-  title: 'Boundaries',
+  title: 'Examples/Boundaries',
   component: Demo,
   parameters: {
     layout: 'fullscreen',

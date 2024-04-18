@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Demo } from './components';
+import { Demo } from '../components';
 
 const meta = {
-  title: 'RealExample',
+  title: 'Examples/Large example',
   component: Demo,
   parameters: {
     layout: 'fullscreen',
@@ -17,9 +17,9 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const RealExample: Story = {
+export const Largeexample: Story = {
   args: {
-    initialLayout: new Array(10)
+    initialLayout: new Array(33)
       .fill(null)
       .map((_, index) => [
         { x: 0, y: index * 10, w: 6, h: 4, i: `W${index * 3 + 1}` },

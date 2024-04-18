@@ -1,0 +1,77 @@
+import { Meta } from '@storybook/blocks';
+
+import { SVGLayout } from '../components';
+
+<Meta title="Dynamics/SolidGravityDynamic" />
+
+# Overlapping cases resolution
+
+Dynamic problem are mainly two:
+
+- Resolve collisions (overlapping)
+- Gravity
+
+Both processes are triggered by the dynamics.
+
+Overlapping is solved by using priority, but sometimes it is difficult to
+understand the different cases we can face, here are some of them.
+
+## Cases
+
+All the cases are faced by normal items (black) and the pushed item (red). The
+pushed item will always has a priority of `Infinity`.
+
+### Overlapping between two items
+
+The pushed item collide with the other two items and will be pushed down.
+
+<SVGLayout layout={[
+  {x: 0, y: 0, w: 2, h: 2, i: '1', f: [{}, {}, { y: 3 }, { y: 2 }] },
+  {x: 2, y: 1, w: 2, h: 2, i: '2', p: Infinity, f: [{}, { x: 1 }, {}, { y: 0 }] },
+  {x: 0, y: 2, w: 2, h: 2, i: '3', f: [{}, {}, { y: 5 }, { y: 4 }] },
+]} />
+
+### Push elements with a gap over
+
+<SVGLayout layout={[
+  {x: 0, y: 0, w: 3, h: 2, i: 1, f: [{}, {}, { y: 5 }]},
+  {x: 3, y: 0, w: 1, h: 5, i: 2, p: Infinity, f: [{}, {x: 2}] },
+  {x: 1, y: 2, w: 2, h: 2, i: 3, f: [{}, {}, { y: 7 }]},
+  {x: 0, y: 5, w: 5, h: 1, i: 4, f: [{}, {}, {}, { y: 9 }]},
+]} />
+
+## Caveats
+
+As we are pushing `support trees` some holes could be filled with other elements
+but not pushed as one would expect, in the next example we could see that the
+item `5` will be pushed by the `support tree` based on the item `1` and the take
+the first empty place:
+
+<SVGLayout layout={[
+  {x: 1, y: 0, w: 2, h: 1, i: '1', f: [{}, {}, { y: 4 }] },
+  {x: 0, y: 1, w: 2, h: 1, i: '2', f: [{}, {}, { y: 5 }] },
+  {x: 1, y: 2, w: 2, h: 1, i: '3', f: [{}, {}, { y: 6 }] },
+  {x: 3, y: 0, w: 2, h: 4, i: '4', p: Infinity, f: [{}, { x: 2 }] },
+  {x: 2, y: 4, w: 2, h: 1, i: '5', f: [{}, {}, {}, { y: 5 }] },
+]} />
+
+## Glossary
+
+- __Priority:__ One item is prioritized to get more relevance to others on
+  overlapping resolution, the dragged element will have always `Infinity`
+  priority
+- __Support tree:__ Is a list of items that are supported by one item, so we will
+  say the support tree of an item, for example: if we have several items one
+  upon another an we said the support tree of the base element we are
+  referencing the list of all elements support by this element and recursively
+  until a gap or empty space
+- __Gap:__ A gap is defined as an empty space between two items
+- __Occupation matrix:__ Is a representation of the items layout using a grid and
+  setting the id on each coordinates that are occupied by this item, in blank
+  space are `null` values, for example:
+  ```
+  W1,   W1,   W1,   null, null
+  W1,   W1,   W1,   null, null
+  null, null, W2,   W2,   null
+  null, null, W2,   W2,   null
+  ```

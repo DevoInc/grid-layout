@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Demo } from './components';
+import { Demo } from '../components';
 
 const meta = {
-  title: 'CollisionWithPriority',
+  title: 'Examples/Scroll',
   component: Demo,
   parameters: {
     layout: 'fullscreen',
@@ -17,13 +17,14 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const CollisionWithPriority: Story = {
+export const Scroll: Story = {
   args: {
-    rowHeight: 24,
-    initialLayout: [
-      { w: 3, h: 10, x: 4, y: 0, i: '1' },
-      { w: 3, h: 9, x: 3, y: 10, i: '2', priority: 1 },
-      { w: 4, h: 14, x: 0, y: 0, i: '3' },
-    ],
+    initialLayout: new Array(20).fill(null).map((_, index) => ({
+      x: 0,
+      y: index,
+      w: 6,
+      h: 1,
+      i: `W${index + 1}`,
+    })),
   },
 };
