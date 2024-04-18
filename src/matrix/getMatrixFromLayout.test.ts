@@ -10,18 +10,14 @@ describe('matrix', () => {
       [
         'two elements',
         [
-          { x: 0, y: 0, w: 2, h: 2, i: 'W1' },
-          { x: 1, y: 2, w: 2, h: 2, i: 'W2' },
+          { x: 0, y: 0, w: 2, h: 2, i: '1' },
+          { x: 1, y: 2, w: 2, h: 2, i: '2' },
         ],
         [
-          // prettier-ignore
-          ['W1', 'W1', null],
-          // prettier-ignore
-          ['W1', 'W1', null],
-          // prettier-ignore
-          [null, 'W2', 'W2'],
-          // prettier-ignore
-          [null, 'W2', 'W2'],
+          ['1', '1', null],
+          ['1', '1', null],
+          [null, '2', '2'],
+          [null, '2', '2'],
         ],
       ],
     ];
