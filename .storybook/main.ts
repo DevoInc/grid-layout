@@ -18,7 +18,11 @@ const config: StorybookConfig = {
     return mergeConfig(config, {
       // Add dependencies to pre-optimization
       optimizeDeps: {
-        include: ['@storybook/addon-themes', '@devoinc/genesys-brand-devo'],
+        include: [
+          '@storybook/blocks',
+          '@storybook/addon-themes',
+          '@devoinc/genesys-brand-devo',
+        ],
       },
     });
   },
