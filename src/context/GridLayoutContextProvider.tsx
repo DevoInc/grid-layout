@@ -8,6 +8,7 @@ type Props = {
   layout: TLayout;
   onChange: (layout: TLayout, final: boolean) => void;
   cols?: number;
+  width?: number;
   rowHeight?: number;
   animation?: number;
   animationTimingFunction?: string;
@@ -20,30 +21,26 @@ export const GridLayoutContextProvider: React.FC<Props> = ({
   onChange,
   cols = 12,
   rowHeight = 80,
+  width = 0,
   animation = 0,
   animationTimingFunction = 'linear',
   showAfterAdjustInitialSize = true,
-}) => {
-  const [colWidth, setColWidth] = React.useState(0);
-
-  return (
-    <GridLayoutContext.Provider
-      value={{
-        layout,
-        onChange: (newLayout: TLayout, final: boolean = false) => {
-          onChange(newLayout, final);
-        },
-        cols,
-        rowHeight,
-        colWidth,
-        setColWidth,
-        animation,
-        animationTimingFunction,
-        isAfterAdjustInitialSize: colWidth > 0,
-        showAfterAdjustInitialSize,
-      }}
-    >
-      {children}
-    </GridLayoutContext.Provider>
-  );
-};
+}) => (
+  <GridLayoutContext.Provider
+    value={{
+      layout,
+      onChange: (newLayout: TLayout, final: boolean = false) => {
+        onChange(newLayout, final);
+      },
+      cols,
+      colWidth: width / cols,
+      rowHeight,
+      width,
+      animation,
+      animationTimingFunction,
+      showAfterAdjustInitialSize,
+    }}
+  >
+    {children}
+  </GridLayoutContext.Provider>
+);

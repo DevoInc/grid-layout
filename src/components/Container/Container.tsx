@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { getHigherPoint } from '../../layout';
 import { GridLayoutContext } from '../../context';
-import { useResizeOberver, useLayoutUpdate } from '../../hook';
+import { useLayoutUpdate } from '../../hook';
 
 type Props = {
   children: React.ReactNode;
@@ -13,14 +13,11 @@ export const Container: React.FC<Props> = ({
   children,
   bgColor = 'rgb(240, 243, 245)',
 }) => {
-  const { layout, rowHeight, isAfterAdjustInitialSize } =
-    React.useContext(GridLayoutContext);
-  const { ref } = useResizeOberver();
+  const { layout, rowHeight } = React.useContext(GridLayoutContext);
   useLayoutUpdate();
 
   return (
     <div
-      ref={ref}
       style={{
         backgroundColor: bgColor,
         minWidth: '100%',
@@ -31,7 +28,7 @@ export const Container: React.FC<Props> = ({
         position: 'relative',
       }}
     >
-      {isAfterAdjustInitialSize ? children : null}
+      {children}
     </div>
   );
 };
