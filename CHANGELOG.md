@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/DevoInc/grid-layout/compare/1.0.0...1.1.0) (2024-04-23)
+
+
+### Features
+
+* added ItemWrapper className ([7ed77bb](https://github.com/DevoInc/grid-layout/commit/7ed77bb7989a0c3dba9fa10324acc5af0de92374))
+
 ## 1.0.0 (2024-04-19)
 
 
