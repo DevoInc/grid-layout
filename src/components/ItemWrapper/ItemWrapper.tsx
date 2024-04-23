@@ -11,6 +11,7 @@ type Props = {
   h: number;
   children?: React.ReactNode;
   disabled?: boolean;
+  className?: string;
 };
 
 const hGap = 16;
@@ -25,6 +26,7 @@ export const ItemWrapper: React.FC<Props> = ({
   h,
   children,
   disabled,
+  className,
 }) => {
   const { colWidth, rowHeight, cols, animation, animationTimingFunction } =
     React.useContext(GridLayoutContext);
@@ -62,6 +64,7 @@ export const ItemWrapper: React.FC<Props> = ({
           : {}),
       }}
       data-id={id}
+      className={className}
       {...attributes}
     >
       {children}

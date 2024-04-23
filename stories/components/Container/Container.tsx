@@ -43,6 +43,7 @@ export const Container: React.FC<Props> = ({
               h={item.h}
               key={item.i}
               disabled={disabled}
+              className={'item-wrapper'}
             >
               <Item
                 id={item.i}
