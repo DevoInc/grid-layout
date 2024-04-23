@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/DevoInc/grid-layout/compare/1.1.0...2.0.0) (2024-04-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* extracted ResizeObserver from core
+
+### Features
+
+* extracted ResizeObserver from core ([4a48caf](https://github.com/DevoInc/grid-layout/commit/4a48caf16d910941a06ba1c75fc686346a335e88))
+
 ## [1.1.0](https://github.com/DevoInc/grid-layout/compare/1.0.0...1.1.0) (2024-04-23)
 
 
