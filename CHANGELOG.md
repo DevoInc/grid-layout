@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/DevoInc/grid-layout/compare/2.0.0...2.0.1) (2024-04-24)
+
+
+### Bug Fixes
+
+* add round layout ([03ac90a](https://github.com/DevoInc/grid-layout/commit/03ac90abf2b719393b73e0cd94104daccd9c6afd))
+
 ## [2.0.0](https://github.com/DevoInc/grid-layout/compare/1.1.0...2.0.0) (2024-04-23)
 
 
