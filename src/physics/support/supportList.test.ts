@@ -1,11 +1,11 @@
 import { describe, expect, test } from 'vitest';
 
-import { getSupportTree } from './supportTree';
 import type { TLayout, TLayoutItem } from '../declarations';
+import { getSupportList } from './supportList';
 
 describe('tree', () => {
   describe('supportTree', () => {
-    describe('getSupportTree', () => {
+    describe('getSupportList', () => {
       const cases: [string, TLayout, TLayoutItem, TLayout][] = [
         [
           'one over other',
@@ -21,7 +21,7 @@ describe('tree', () => {
         ],
       ];
       test.each(cases)('%s', (_title, layout, item, expected) => {
-        expect(getSupportTree(layout, item)).toEqual(expected);
+        expect(getSupportList(layout, item)).toEqual(expected);
       });
     });
   });
