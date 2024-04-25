@@ -63,7 +63,7 @@ export const Item: React.FC<Props> = ({
             setSelected((prev) => !prev);
           }}
         >
-          <Typography.Paragraph size={'xs'}>
+          <Typography.Paragraph size={'md'}>
             {id}. ({x}, {y}) ({w}, {h})
           </Typography.Paragraph>
         </Flex>

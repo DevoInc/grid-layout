@@ -55,7 +55,7 @@ export const Container: React.FC<Props> = ({
   );
 
   return (
-    <div ref={ref}>
+    <div ref={ref} style={{ height: '100%' }}>
       <GridLayout.Provider
         layout={layout}
         onChange={onChange}

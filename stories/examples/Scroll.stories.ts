@@ -19,12 +19,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Scroll: Story = {
   args: {
-    initialLayout: new Array(20).fill(null).map((_, index) => ({
+    initialLayout: new Array(50).fill(null).map((_, index) => ({
       x: 0,
       y: index,
       w: 6,
       h: 1,
-      i: `W${index + 1}`,
+      i: String(index + 1),
     })),
   },
 };
