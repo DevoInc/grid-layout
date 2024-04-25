@@ -1,11 +1,7 @@
 import type { TLayout } from '../../declarations';
-import {
-  getHeightMap,
-  getLayoutCollisions,
-  getSupportList,
-  hasCollision,
-} from '../../physics';
+import { getLayoutCollisions } from '../../physics';
 import { sortLayout } from '../../layout';
+import { getIncMap } from './incMap';
 
 export const resolveCollisions = (
   layout: TLayout,
@@ -24,28 +20,8 @@ export const resolveCollisions = (
     return layout;
   }
 
-  const sortedLayout = sortLayout(layout);
-
   const collide = collisions[0];
-  const incMap = sortedLayout
-    .filter((item) => item.i !== collide.i && hasCollision(item, collide))
-    .reduce((prev, item) => {
-      const inc = collide.y + collide.h - item.y;
-      const priority = item.priority ? item.priority : branchPriority--;
-      const heightMap = getHeightMap(layout, item.y + item.h);
-      return {
-        ...getSupportList(heightMap, item)
-          .filter((it) => it.priority === undefined || it.priority <= priority)
-          .reduce(
-            (prev2, item2) => ({
-              ...prev2,
-              [item2.i]: { inc, priority },
-            }),
-            {},
-          ),
-        ...prev,
-      };
-    }, {});
+  const incMap = getIncMap(sortLayout(layout), collide, branchPriority);
 
   const nextLayout = layout.map((item) =>
     incMap[item.i] !== undefined
