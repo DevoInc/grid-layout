@@ -4,7 +4,12 @@ import { useSize, useScroll } from 'ahooks';
 
 import { type Brand } from '@devoinc/genesys-brand-devo';
 
-import { GridLayout, getItemsInViewport, type TLayout } from '../../../src';
+import {
+  GridLayout,
+  getItemsInViewport,
+  scaleLayout,
+  type TLayout,
+} from '../../../src';
 import { Item } from '../Item';
 import { Placeholder } from '../Placeholder';
 
@@ -28,29 +33,18 @@ export const Container: React.FC<Props> = ({
   const tokens = useTheme() as Brand;
 
   const $container = (ref.current as HTMLDivElement)?.parentElement;
-  const viewportSize: DOMRect = $container
+  const viewportSize: DOMRect | null = $container
     ? $container.getBoundingClientRect()
-    : {
-        height: 0,
-        width: 0,
-        x: 0,
-        y: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
-        top: 0,
-        toJSON: () => null,
-      };
+    : null;
   const scroll = useScroll($container);
   const itemsInViewport = getItemsInViewport(
-    layout,
-    (size?.width ?? 0) / cols,
-    rowHeight,
+    scaleLayout(layout, (size?.width ?? 0) / cols, rowHeight),
     {
-      width: viewportSize.width,
-      height: viewportSize.height,
-      scroll: scroll?.top ?? 0,
-      falloff: viewportSize.height / 2,
+      width: Infinity,
+      height: viewportSize?.height ?? 0,
+      xScroll: 0,
+      yScroll: scroll?.top ?? 0,
+      falloff: (viewportSize?.height ?? 0) / 2,
     },
   );
 

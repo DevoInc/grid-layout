@@ -2,5 +2,6 @@ export type TViewport = {
   width: number;
   height: number;
   falloff: number;
-  scroll: number;
+  xScroll: number;
+  yScroll: number;
 };
