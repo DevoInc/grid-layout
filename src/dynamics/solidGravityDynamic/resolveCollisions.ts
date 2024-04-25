@@ -21,7 +21,11 @@ export const resolveCollisions = (
   }
 
   const collide = collisions[0];
-  const incMap = getIncMap(sortLayout(layout), collide, branchPriority);
+  const { incMap, nextBranchPriority } = getIncMap(
+    sortLayout(layout),
+    collide,
+    branchPriority,
+  );
 
   const nextLayout = layout.map((item) =>
     incMap[item.i] !== undefined
@@ -33,5 +37,5 @@ export const resolveCollisions = (
       : item,
   );
 
-  return resolveCollisions(nextLayout, counter + 1, branchPriority);
+  return resolveCollisions(nextLayout, counter + 1, nextBranchPriority);
 };

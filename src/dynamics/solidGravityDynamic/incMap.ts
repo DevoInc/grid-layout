@@ -5,12 +5,13 @@ export const getIncMap = (
   layout: TLayout,
   collide: TLayoutItem,
   branchPriority: number,
-) =>
-  layout
+) => {
+  let nextBranchPriority = branchPriority;
+  const incMap = layout
     .filter((item) => item.i !== collide.i && hasCollision(item, collide))
     .reduce((prev, item) => {
       const inc = collide.y + collide.h - item.y;
-      const priority = item.priority ? item.priority : branchPriority--;
+      const priority = item.priority ? item.priority : nextBranchPriority--;
       const heightMap = getHeightMap(layout, item.y + item.h);
       return {
         ...getSupportList(heightMap, item)
@@ -25,3 +26,5 @@ export const getIncMap = (
         ...prev,
       };
     }, {});
+  return { incMap, nextBranchPriority };
+};
