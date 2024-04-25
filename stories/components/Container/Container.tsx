@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useTheme } from 'styled-components';
-import { useSize } from 'ahooks';
+import { useSize, useScroll } from 'ahooks';
 
 import { type Brand } from '@devoinc/genesys-brand-devo';
 
-import { GridLayout, type TLayout } from '../../../src';
+import { GridLayout, getItemsInViewport, type TLayout } from '../../../src';
 import { Item } from '../Item';
 import { Placeholder } from '../Placeholder';
 
@@ -23,9 +23,36 @@ export const Container: React.FC<Props> = ({
   cols = 12,
   disabled = false,
 }) => {
-  const ref = React.useRef(null);
+  const ref = React.useRef<HTMLDivElement>(null);
   const size = useSize(ref);
   const tokens = useTheme() as Brand;
+
+  const $container = (ref.current as HTMLDivElement)?.parentElement;
+  const viewportSize: DOMRect = $container
+    ? $container.getBoundingClientRect()
+    : {
+        height: 0,
+        width: 0,
+        x: 0,
+        y: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        top: 0,
+        toJSON: () => null,
+      };
+  const scroll = useScroll($container);
+  const itemsInViewport = getItemsInViewport(
+    layout,
+    (size?.width ?? 0) / cols,
+    rowHeight,
+    {
+      width: viewportSize.width,
+      height: viewportSize.height,
+      scroll: scroll?.top ?? 0,
+      falloff: viewportSize.height / 2,
+    },
+  );
 
   return (
     <div ref={ref}>
@@ -51,15 +78,17 @@ export const Container: React.FC<Props> = ({
                   disabled={disabled}
                   className={'item-wrapper'}
                 >
-                  <Item
-                    id={item.i}
-                    content={item.data?.content as string}
-                    disabled={disabled}
-                    x={item.x}
-                    y={item.y}
-                    w={item.w}
-                    h={item.h}
-                  />
+                  {itemsInViewport.includes(item.i) && (
+                    <Item
+                      id={item.i}
+                      content={item.data?.content as string}
+                      disabled={disabled}
+                      x={item.x}
+                      y={item.y}
+                      w={item.w}
+                      h={item.h}
+                    />
+                  )}
                 </GridLayout.ItemWrapper>
               ))}
             <GridLayout.Placeholder>

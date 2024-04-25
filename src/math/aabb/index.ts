@@ -1,1 +1,2 @@
-export * from './aabb';
+export * from './areAABBOverlapped';
+export * from './getAABBFromRect';

@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest';
 
-import { getAABBFromRect } from './aabb';
+import { getAABBFromRect } from './getAABBFromRect';
 import type { TAABB, TRect } from '../declarations';
 
 describe('math', () => {

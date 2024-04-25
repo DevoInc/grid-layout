@@ -1,4 +1,5 @@
 export * from './removeDuplicates';
 export * from './removeProp';
-export * from './sort';
 export * from './round';
+export * from './scaleLayout';
+export * from './sort';

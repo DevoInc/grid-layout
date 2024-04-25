@@ -30,6 +30,12 @@ describe('collisions', () => {
         { x: 1, y: 0, w: 2, h: 2, i: '2' },
         true,
       ],
+      [
+        'one element inside other',
+        { x: 0, y: 0, w: 5, h: 5, i: '1' },
+        { x: 1, y: 1, w: 3, h: 3, i: '2' },
+        true,
+      ],
     ];
 
     test.each(cases)('%s', (_title, item1, item2, expected) => {
