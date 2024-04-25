@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Largeexample: Story = {
   args: {
-    initialLayout: new Array(33)
+    initialLayout: new Array(100)
       .fill(null)
       .map((_, index) => [
         { x: 0, y: index * 10, w: 6, h: 4, i: String(index * 3 + 1) },
