@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.1.0](https://github.com/DevoInc/grid-layout/compare/2.0.1...2.1.0) (2024-05-22)
+
+
+### Features
+
+* change the way of use the viewport ([333556c](https://github.com/DevoInc/grid-layout/commit/333556c02ad7030471fbc8e3229db3105449530a))
+* improved performance on movements ([988169c](https://github.com/DevoInc/grid-layout/commit/988169c63a729f7781c4b0a6ee2ab7ef4df3d7ae))
+
+
+### Bug Fixes
+
+* nextBranch value on resolveCollisions ([f2815dc](https://github.com/DevoInc/grid-layout/commit/f2815dc3fa09c66faf11a143ea43a4c6cb722515))
+
 ## [2.0.1](https://github.com/DevoInc/grid-layout/compare/2.0.0...2.0.1) (2024-04-24)
 
 
