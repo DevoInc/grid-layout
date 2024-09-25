@@ -10,6 +10,7 @@ type Props = {
   cols?: number;
   rowHeight?: number;
   disabled?: boolean;
+  debug?: boolean;
 };
 
 export const Demo: React.FC<Props> = ({
@@ -17,6 +18,7 @@ export const Demo: React.FC<Props> = ({
   cols = 12,
   rowHeight = 80,
   disabled = false,
+  debug = false,
 }) => {
   // Compact at initial layout
   const [layout, setLayout] = React.useState<TLayout>(
@@ -31,12 +33,14 @@ export const Demo: React.FC<Props> = ({
             // compact on any change to the layout
             setLayout(solidGravityDynamic(layout));
             if (final) {
+              // eslint-disable-next-line
               console.log('onFinalChange', layout);
             }
           }}
           cols={cols}
           rowHeight={rowHeight}
           disabled={disabled}
+          debug={debug}
         />
       </AppLayout.Content>
     </AppLayout>

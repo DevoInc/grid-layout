@@ -1,8 +1,9 @@
+import * as React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Demo } from '../components';
 
-const meta = {
+const meta: Meta<typeof Demo> = {
   title: 'Examples/Boundaries',
   component: Demo,
   parameters: {
@@ -12,12 +13,15 @@ const meta = {
       rightPanelWidth: 0,
     },
   },
-} satisfies Meta<typeof Demo>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Demo>;
 
 export const Boundaries: Story = {
+  render: (args, { globals: { debug } }) => {
+    return <Demo {...args} debug={debug} />;
+  },
   args: {
     initialLayout: [
       { x: 0, y: 0, w: 2, h: 2, i: '1' },

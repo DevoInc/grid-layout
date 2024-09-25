@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Demo } from '../components';
 
-const meta = {
+const meta: Meta<typeof Demo> = {
   title: 'Examples/Large example',
   component: Demo,
   parameters: {
@@ -12,14 +12,17 @@ const meta = {
       rightPanelWidth: 0,
     },
   },
-} satisfies Meta<typeof Demo>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Demo>;
 
 export const Largeexample: Story = {
+  render: (args, { globals: { debug } }) => {
+    return <Demo {...args} debug={debug} />;
+  },
   args: {
-    initialLayout: new Array(100)
+    initialLayout: Array.from({ length: 100 })
       .fill(null)
       .map((_, index) => [
         { x: 0, y: index * 10, w: 6, h: 4, i: String(index * 3 + 1) },

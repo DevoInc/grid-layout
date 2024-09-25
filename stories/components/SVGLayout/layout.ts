@@ -16,7 +16,11 @@ export const getPropValues = (item: TItem, prop: TProps) =>
   );
 
 export const padEndArray = (list: number[], total: number) =>
-  list.concat(new Array(total - list.length).fill(list[list.length - 1]));
+  list.concat(
+    Array.from({ length: total - list.length }).fill(
+      list[list.length - 1],
+    ) as number[],
+  );
 
 export const sumArrays = (arr1: number[], arr2: number[]) =>
   arr1.map((x, i) => x + arr2[i]);

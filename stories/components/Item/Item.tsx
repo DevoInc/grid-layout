@@ -35,13 +35,14 @@ export const Item: React.FC<Props> = ({
   });
 
   return (
-    <>
+    <div style={{ height: '100%' }} draggable="false">
       <Panel
         height={'100%'}
-        draggable={true}
+        draggable="false"
         elevation={isDragging ? 'draggable' : 'raised'}
-        styles={{
+        style={{
           borderColor: selected ? 'red' : 'none',
+          userSelect: 'none',
         }}
       >
         <Flex
@@ -49,8 +50,8 @@ export const Item: React.FC<Props> = ({
           as={'header'}
           flex="0 0 auto"
           zIndex={1}
-          styles={css`
-            cursor: ${isDragging ? 'grabbing' : 'pointer'};
+          style={css`
+            cursor: ${isDragging ? 'grabbing' : disabled ? 'auto' : 'pointer'};
             border-bottom: 1px solid ${theme.cmp.panel.header.color.border};
             padding: ${theme.cmp.panel.header.space.padding.xs};
 
@@ -75,7 +76,7 @@ export const Item: React.FC<Props> = ({
           )}
         </Panel.Body>
       </Panel>
-      <StyledResizeHandler {...resizeListeners} />
-    </>
+      {!disabled && <StyledResizeHandler {...resizeListeners} />}
+    </div>
   );
 };

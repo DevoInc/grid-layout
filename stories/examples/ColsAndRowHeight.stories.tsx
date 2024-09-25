@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Demo } from '../components';
 
-const meta = {
+const meta: Meta<typeof Demo> = {
   title: 'Examples/Cols and row height',
   component: Demo,
   parameters: {
@@ -12,12 +12,15 @@ const meta = {
       rightPanelWidth: 0,
     },
   },
-} satisfies Meta<typeof Demo>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Demo>;
 
 export const Colsandrowheight: Story = {
+  render: (args, { globals: { debug } }) => {
+    return <Demo {...args} debug={debug} />;
+  },
   args: {
     initialLayout: [
       { x: 0, y: 0, w: 2, h: 8, i: '1' },

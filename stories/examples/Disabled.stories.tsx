@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Demo } from '../components';
 
-const meta = {
+const meta: Meta<typeof Demo> = {
   title: 'Examples/Disabled',
   component: Demo,
   parameters: {
@@ -12,12 +12,15 @@ const meta = {
       rightPanelWidth: 0,
     },
   },
-} satisfies Meta<typeof Demo>;
+};
 
 export default meta;
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Demo>;
 
 export const Disabled: Story = {
+  render: (args, { globals: { debug } }) => {
+    return <Demo {...args} debug={debug} />;
+  },
   args: {
     disabled: true,
     initialLayout: [

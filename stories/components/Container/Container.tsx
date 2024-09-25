@@ -5,6 +5,7 @@ import { useSize, useScroll } from 'ahooks';
 import { type Brand } from '@devoinc/genesys-brand-devo';
 
 import {
+  Debugger,
   GridLayout,
   getItemsInViewport,
   scaleLayout,
@@ -19,6 +20,7 @@ type Props = {
   rowHeight?: number;
   cols?: number;
   disabled?: boolean;
+  debug?: boolean;
 };
 
 export const Container: React.FC<Props> = ({
@@ -27,6 +29,7 @@ export const Container: React.FC<Props> = ({
   rowHeight = 80,
   cols = 12,
   disabled = false,
+  debug = false,
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const size = useSize(ref);
@@ -99,6 +102,7 @@ export const Container: React.FC<Props> = ({
                 }
               />
             </GridLayout.ResizeHelper>
+            {debug && <Debugger />}
           </GridLayout.Container>
         </GridLayout.Wrapper>
       </GridLayout.Provider>
