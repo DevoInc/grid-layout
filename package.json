@@ -19,8 +19,7 @@
     "test": "vitest",
     "test:ci": "vitest --coverage",
     "lint": "oxlint -c oxlintrc.json",
-    "build": "vite build",
-    "analyzer": "vite-bundle-visualizer -o 'dist/stats.html'",
+    "build": "tsup",
     "start": "npm run storybook",
     "release": "release-it --dry-run",
     "release:ci": "release-it --ci",
@@ -35,47 +34,64 @@
   },
   "devDependencies": {
     "@devoinc/genesys-base-styles": "^2.0.1",
-    "@devoinc/genesys-brand-devo": "^6.5.0",
-    "@devoinc/genesys-ui": "^12.0.0",
-    "@release-it/conventional-changelog": "^8.0.2",
-    "@storybook/addon-essentials": "^8.3.3",
-    "@storybook/addon-interactions": "^8.3.3",
-    "@storybook/addon-links": "^8.3.3",
-    "@storybook/addon-themes": "^8.3.3",
-    "@storybook/blocks": "^8.3.3",
-    "@storybook/react": "^8.3.3",
-    "@storybook/react-vite": "^8.3.3",
+    "@devoinc/genesys-brand-devo": "^8.1.1",
+    "@devoinc/genesys-ui": "^14.3.2",
+    "@release-it/conventional-changelog": "^9.0.3",
+    "@storybook/addon-essentials": "^8.4.7",
+    "@storybook/addon-interactions": "^8.4.7",
+    "@storybook/addon-links": "^8.4.7",
+    "@storybook/addon-themes": "^8.4.7",
+    "@storybook/blocks": "^8.4.7",
+    "@storybook/react": "^8.4.7",
+    "@storybook/react-vite": "^8.4.7",
     "@storybook/testing-library": "^0.2.2",
-    "@types/node": "^22.7.0",
-    "@types/react": "^18.3.9",
-    "@types/react-dom": "^18.3.0",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
     "@types/styled-components": "^5.1.34",
-    "@vitejs/plugin-react-swc": "^3.7.0",
-    "@vitest/coverage-v8": "^2.1.1",
-    "ahooks": "^3.8.1",
-    "babel-plugin-styled-components": "^2.1.4",
+    "@vitest/coverage-v8": "^2.1.8",
+    "ahooks": "^3.8.4",
     "jsdom": "^25.0.1",
-    "oxlint": "^0.9.8",
-    "prettier": "^3.3.3",
-    "react-dom": "^18.3.1",
-    "release-it": "^17.6.0",
-    "rollup-plugin-visualizer": "^5.12.0",
-    "sass": "^1.79.3",
-    "storybook": "^8.3.3",
+    "oxlint": "^0.15.3",
+    "prettier": "^3.4.2",
+    "react-dom": "^19.0.0",
+    "release-it": "^17.10.0",
+    "sass": "^1.83.0",
+    "storybook": "^8.4.7",
     "styled-components": "^6.1.13",
-    "typescript": "^5.6.2",
-    "vite": "^5.4.8",
-    "vite-bundle-visualizer": "^1.2.1",
-    "vite-plugin-dts": "^4.2.2",
-    "vitest": "^2.1.1"
+    "terser": "^5.37.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "overrides": {
+    "esbuild": "0.24.0",
+    "ahooks": {
+      "react": "$react"
+    },
+    "react-dock": {
+      "react": "$react",
+      "@types/react": "$@types/react"
+    },
+    "react-grid-system": {
+      "react": "$react"
+    },
+    "react-popper": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    },
+    "react-windowed-select": {
+      "react": "$react",
+      "react-dom": "$react-dom"
+    }
   },
   "peerDependencies": {
-    "@dnd-kit/core": "^6.1.0",
-    "@dnd-kit/utilities": "^3.2.2",
-    "react": "^18.3.1"
+    "@dnd-kit/core": "6.x",
+    "@dnd-kit/utilities": "3.x",
+    "react": "^16.3.0 || 17.x || 18.x || 19.x"
   },
   "engines": {
     "node": ">=18",
-    "npm": ">=7"
+    "npm": ">=8"
   }
 }
