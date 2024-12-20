@@ -1,17 +1,16 @@
 import * as React from 'react';
 
-import { StyledDebugger } from './StyledDebugger';
 import { GridLayoutContext } from '../../context';
 
 export const Debugger = () => {
   const { width, cols, rowHeight } = React.useContext(GridLayoutContext);
-  const ref = React.useRef();
+  const ref = React.useRef<HTMLCanvasElement>(null);
   React.useEffect(() => {
     if (ref.current && width > 0) {
       const colWidth = width / cols;
       const height = 900;
 
-      const canvas = ref.current as HTMLCanvasElement;
+      const canvas = ref.current;
       canvas.width = width;
       canvas.height = height;
       const ctx = canvas.getContext('2d');
@@ -34,8 +33,18 @@ export const Debugger = () => {
     }
   }, [width]);
   return (
-    <StyledDebugger>
+    <div
+      style={{
+        position: 'fixed',
+        top: 0,
+        zIndex: 100,
+        pointerEvents: 'none',
+        width: '100%',
+        height: '100%',
+        overflow: 'hidden',
+      }}
+    >
       <canvas ref={ref} />
-    </StyledDebugger>
+    </div>
   );
 };

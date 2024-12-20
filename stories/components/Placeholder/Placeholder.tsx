@@ -4,16 +4,10 @@ import { StyledPlaceholder } from './StyledPlaceholder';
 
 type Props = {
   bgColor?: string;
-  over?: boolean;
 };
 
-export const Placeholder: React.FC<Props> = ({
-  bgColor = '#ccc',
-  over = false,
-}) => {
-  return (
-    <StyledPlaceholder bgColor={bgColor} over={over}>
-      <div></div>
-    </StyledPlaceholder>
-  );
-};
+export const Placeholder: React.FC<Props> = ({ bgColor = '#ccc' }) => (
+  <StyledPlaceholder $bgColor={bgColor}>
+    <div></div>
+  </StyledPlaceholder>
+);

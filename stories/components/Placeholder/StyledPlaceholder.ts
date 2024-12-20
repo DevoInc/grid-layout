@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 type Props = {
-  bgColor: string;
-  over: boolean;
+  $bgColor: string;
 };
 
 export const StyledPlaceholder = styled.div<Props>`
@@ -14,6 +13,6 @@ export const StyledPlaceholder = styled.div<Props>`
     width: 100%;
     height: 100%;
     border-radius: 6px;
-    background-color: ${({ bgColor }) => bgColor};
+    background-color: ${({ $bgColor }) => $bgColor};
   }
 `;

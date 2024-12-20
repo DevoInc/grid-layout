@@ -1,4 +1,5 @@
 import type { TLayout } from '../../declarations';
+import type { TMatrix } from '../../matrix/declarations';
 import { sortLayout } from '../../layout';
 import {
   getUpperSpace,
@@ -14,11 +15,11 @@ export const gravity = (layout: TLayout) => {
 
   for (const item of sortedLayout) {
     const mutatedItem = newLayout.find((it) => it.i === item.i);
-    const moveSpaces = getUpperSpace(matrix, mutatedItem);
+    const moveSpaces = getUpperSpace(matrix as TMatrix, mutatedItem);
     if (moveSpaces > 0) {
-      removeMatrixItem(matrix, mutatedItem.i);
+      removeMatrixItem(matrix as TMatrix, mutatedItem.i);
       mutatedItem.y -= moveSpaces;
-      addMatrixItem(matrix, mutatedItem);
+      addMatrixItem(matrix as TMatrix, mutatedItem);
     }
   }
 
