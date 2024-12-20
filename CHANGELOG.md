@@ -1,5 +1,19 @@
 # Changelog
 
+## [2.1.1](https://github.com/DevoInc/grid-layout/compare/2.1.0...2.1.1) (2024-12-20)
+
+### Bug Fixes
+
+* type errors on Debugger and Placeholder ([0b416fc](https://github.com/DevoInc/grid-layout/commit/0b416fcd05fec88a30fe117267f5f6e49a2c0351))
+
+### Vulnerabilities
+
+* **deps-dev:** bump braces from 3.0.2 to 3.0.3 ([c275545](https://github.com/DevoInc/grid-layout/commit/c275545857619513c5323132f05c091bfd8e607a))
+* **deps-dev:** bump vite from 5.2.10 to 5.4.6 ([aacb0da](https://github.com/DevoInc/grid-layout/commit/aacb0da2e0c4e86c22b3ee3dd0447170498c1acc))
+* **deps-dev:** bump ws from 8.16.0 to 8.17.1 ([53388bc](https://github.com/DevoInc/grid-layout/commit/53388bc5223663e5fdcdfa80e294a48e42ca0a74))
+* **deps:** bump body-parser and express ([da98862](https://github.com/DevoInc/grid-layout/commit/da98862e0adb528c753f561a705c1e1e218a9bcf))
+* **deps:** bump cookie and express ([45eb171](https://github.com/DevoInc/grid-layout/commit/45eb171527c8980cad7868d1964b11b7c17c1c0f))
+
 ## [2.1.0](https://github.com/DevoInc/grid-layout/compare/2.0.1...2.1.0) (2024-05-22)
 
 
