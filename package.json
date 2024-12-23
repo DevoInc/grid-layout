@@ -3,13 +3,13 @@
   "version": "2.1.1",
   "description": "Grid layout",
   "type": "module",
-  "types": "./dist/GridLayout.d.ts",
-  "main": "./dist/GridLayout.umd.cjs",
-  "module": "./dist/GridLayout.js",
+  "types": "./dist/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "exports": {
     ".": {
-      "import": "./dist/GridLayout.js",
-      "require": "./dist/GridLayout.umd.cjs"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
   "files": [
