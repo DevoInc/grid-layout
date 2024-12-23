@@ -1,6 +1,6 @@
 {
   "name": "@devoinc/grid-layout",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Grid layout",
   "type": "module",
   "types": "./dist/index.d.ts",

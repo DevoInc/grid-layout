@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.1.2](https://github.com/DevoInc/grid-layout/compare/2.1.1...2.1.2) (2024-12-23)
+
+### Bug Fixes
+
+* missed entrypoints after tsup change ([3977918](https://github.com/DevoInc/grid-layout/commit/39779189fc36f8d7ec90efef79645da28f015570))
+
 ## [2.1.1](https://github.com/DevoInc/grid-layout/compare/2.1.0...2.1.1) (2024-12-20)
 
 ### Bug Fixes
