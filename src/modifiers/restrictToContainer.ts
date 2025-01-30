@@ -14,11 +14,11 @@ export const restrictToParentElement: Modifier = ({
 
   const type = active?.data.current?.type;
   const activatorEventTarget = activatorEvent?.target as HTMLDivElement;
+  const parentContainer = activatorEventTarget?.parentNode
+    ?.parentNode as HTMLDivElement;
   const parentContainerRect =
-    type === 'resize'
-      ? (
-          activatorEventTarget?.parentNode?.parentNode as HTMLDivElement
-        ).getBoundingClientRect()
+    type === 'resize' && parentContainer
+      ? parentContainer.getBoundingClientRect()
       : containerNodeRect;
 
   return restrictToBoundingRect(
